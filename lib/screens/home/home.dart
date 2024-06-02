@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mybca_prototype/screens/home/home_provider.dart';
 import 'package:mybca_prototype/utils/fonts.dart';
@@ -28,55 +29,16 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  // int _selectedIndex = 1;
-  // static const TextStyle optionStyle =
-  // TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  // static const List<Widget> _widgetOptions = <Widget>[
-  //   Text(
-  //     'Index 0: Home',
-  //     style: optionStyle,
-  //   ),
-  //   Text(
-  //     'Index 1: Business',
-  //     style: optionStyle,
-  //   ),
-  //   Text(
-  //     'Index 2: School',
-  //     style: optionStyle,
-  //   ),
-  // ];
-  //
-  // void _onItemTapped(int index) {
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
     HomeProvider provider = Modular.get<HomeProvider>();
     final read = context.read<HomeProvider>();
     final watch = context.watch<HomeProvider>();
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: const SizedBox(
-            child : Image(image : AssetImage('assets/logobca.png'))
-        ),
-      ),
       body: Container(
-        color: Theme.of(context).colorScheme.primary,
+        color: Color(0xFF0060AF),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -101,7 +63,9 @@ class _HomeState extends State<Home> {
                       child: Row(
                         children: [
                           widgetFont(" HALO", title1),
-                          widgetFont(" USER1", blue),
+                          Semantics(
+                              label: "ini adalah username kamu",
+                              child: widgetFont(" USER1", blue)),
                         ],
                       ),
                     ),
@@ -116,14 +80,20 @@ class _HomeState extends State<Home> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               widgetFont("Total Saldo", jumbo1),
-                              widgetFont("Rekening 0943-XXX-XXX", orange),
+                              Semantics(
+                                  label: "Ini adalah nomor rekening kamu",
+                                  child: widgetFont("Rekening 0943-XXX-XXX", orange)),
                               SizedBox(height: 70,),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                 read.obscure
-                                  ? widgetFont("IDR *******", title3)
-                                  : widgetFont("IDR 354.000", title3),
+                                  ? Semantics(
+                                    label: "Ini adalah total saldo kamu, tetapi masih dalam mode disembunyikan, jika kamu ingin melihatnya, tekan tombol tunjukkan saldo yang ada di sebelah kanan-nya",
+                                    child: widgetFont("IDR *******", title3))
+                                  : Semantics(
+                                    label: "Ini adalah total saldo kamu, dalam mode tidak disembunyikan",
+                                    child: widgetFont("IDR 354.000", title3)),
                                   IconButton(
                                     icon: watch.obscure
                                         ? const Icon(Icons.remove_red_eye, color: Colors.white,)
@@ -219,7 +189,7 @@ class _HomeState extends State<Home> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 68,),
+                    SizedBox(height: MediaQuery.of(context).size.height*0.108),
                   ],
                 )
             ),

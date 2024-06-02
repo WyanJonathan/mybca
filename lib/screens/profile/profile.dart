@@ -32,19 +32,19 @@ class _ProfileState extends State<Profile> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: const SizedBox(
-            child : Image(image : AssetImage('assets/logobca.png'))
-        ),
-      ),
+      // appBar: AppBar(
+      //   // TRY THIS: Try changing the color here to a specific color (to
+      //   // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
+      //   // change color while the other colors stay the same.
+      //   backgroundColor: Theme.of(context).colorScheme.primary,
+      //   // Here we take the value from the MyHomePage object that was created by
+      //   // the App.build method, and use it to set our appbar title.
+      //   title: const SizedBox(
+      //       child : Image(image : AssetImage('assets/logobca.png'))
+      //   ),
+      // ),
       body: Container(
-        color: Theme.of(context).colorScheme.primary,
+        color: Color(0xFF0060AF),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -214,7 +214,7 @@ class _ProfileState extends State<Profile> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 87,),
+                    SizedBox(height: MediaQuery.of(context).size.height*0.1255),
                   ],
                 )
             ),

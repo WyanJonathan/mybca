@@ -42,7 +42,7 @@ dependencies:
   asuka: ^2.2.1
   flutter_pin_code_widget: ^0.1.2
   local_auth: ^2.2.0
-  persistent_bottom_nav_bar: any
+#  persistent_bottom_nav_bar: any
   table_calendar: any
 
 dev_dependencies:

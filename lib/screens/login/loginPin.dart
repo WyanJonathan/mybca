@@ -29,6 +29,14 @@ class _LoginPinPageState extends State<LoginPinPage> {
   String pin_user = "Abcde1";
   final _formKey = GlobalKey<FormState>();
   LoginProvider provider = Modular.get<LoginProvider>();
+  late bool _passwordVisible;
+
+  final TextEditingController _userPasswordController = TextEditingController();
+
+  @override
+  void initState() {
+    _passwordVisible = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +52,16 @@ class _LoginPinPageState extends State<LoginPinPage> {
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.primary,
+          backgroundColor: Theme.of(context).colorScheme.primary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: widgetFont("Pin", title4)
+        title: Semantics(
+            label: "Ini adalah halaman untuk kamu memasukkan Pin",
+            enabled: false,
+            child: widgetFont("Pin", title4))
       ),
       body: Container(
-        color: Theme.of(context).colorScheme.primary,
+        color: Colors.white,//.of(context).colorScheme.primary,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -126,6 +137,28 @@ class _LoginPinPageState extends State<LoginPinPage> {
                       children: [
                         Center(child: widgetFont("Masukkan Pin Kamu", title1)),
                         TextFormField(
+                            controller: _userPasswordController,
+                            obscureText: !_passwordVisible,
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              hintText: 'Enter your password',
+                              // Here is key idea
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  // Based on passwordVisible state choose the icon
+                                  _passwordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Theme.of(context).primaryColorDark,
+                                ),
+                                onPressed: () {
+                                  // Update the state i.e. toogle the state of passwordVisible variable
+                                  setState(() {
+                                    _passwordVisible = !_passwordVisible;
+                                  });
+                                },
+                              ),
+                            ),
                           // The validator receives the text that the user has entered.
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -134,6 +167,9 @@ class _LoginPinPageState extends State<LoginPinPage> {
                               asuka.AsukaSnackbar.success("Success").show();
                               provider.navigationPage();
                             } else {
+                              setState(() {
+                                _userPasswordController.clear();
+                              });
                               return 'Incorrect Pin';
                             };
                           }
@@ -144,7 +180,7 @@ class _LoginPinPageState extends State<LoginPinPage> {
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  backgroundColor: Theme.of(context).colorScheme.primary,
+                                  backgroundColor: Color(0xFF0060AF),
                                   ),
                               onPressed: () {
                                 // Validate returns true if the form is valid, or false otherwise.
@@ -157,14 +193,16 @@ class _LoginPinPageState extends State<LoginPinPage> {
                                   // );
                                 }
                               },
-                              child: Text("Kirim", style : TextStyle(fontSize: 23, color: Colors.white),),
+                              child: Semantics(
+                                  label: "Kirim pin yang sudah kamu masukkan",
+                                  child: Text("Kirim", style : TextStyle(fontSize: 23, color: Colors.white),)),
                             ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 484),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.5),
                   Center(
                     child: Container(
                       child: TextButton(

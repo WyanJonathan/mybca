@@ -34,7 +34,7 @@ class _riwayatPage2State extends State<riwayatPage2> {
         ),
         body: SingleChildScrollView(
           child: Container(
-            color: Theme.of(context).colorScheme.primary,
+            color: Color(0xFF0060AF),
             child: Column(
               children: [
                 Container(
