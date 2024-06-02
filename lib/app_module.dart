@@ -6,6 +6,8 @@ import 'package:mybca_prototype/screens/login/login_provider.dart';
 import 'package:mybca_prototype/screens/login/loginPin.dart';
 import 'package:mybca_prototype/screens/navigationPage.dart';
 import 'package:mybca_prototype/screens/notificationPage.dart';
+import 'package:mybca_prototype/screens/profile/profile.dart';
+import 'package:mybca_prototype/screens/profile/profile_provider.dart';
 import 'package:mybca_prototype/screens/riwayat/riwayatPage.dart';
 import 'package:mybca_prototype/screens/riwayat/riwayatPage2.dart';
 import 'package:mybca_prototype/screens/riwayat/riwayatPage3.dart';
@@ -18,6 +20,7 @@ class AppModule extends Module {
     i.addSingleton(LoginProvider.new);
     i.addSingleton(HomeProvider.new);
     i.addSingleton(RiwayatProvider.new);
+    i.addSingleton(ProfileProvider.new);
   }
 
   @override
@@ -30,6 +33,7 @@ class AppModule extends Module {
     r.child('/riwayatPage', child: (context) => riwayatPage(), transition: TransitionType.rightToLeftWithFade);
     r.child('/riwayatPage2', child: (context) => riwayatPage2(), transition: TransitionType.rightToLeftWithFade);
     r.child('/riwayatPage3', child: (context) => riwayatPage3(), transition: TransitionType.rightToLeftWithFade);
+    r.child('/profile', child: (context) => Profile(title: '',), transition: TransitionType.rightToLeftWithFade);
 
   }
 }

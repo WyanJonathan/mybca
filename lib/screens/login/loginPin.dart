@@ -143,6 +143,9 @@ class _LoginPinPageState extends State<LoginPinPage> {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Theme.of(context).colorScheme.primary,
+                                  ),
                               onPressed: () {
                                 // Validate returns true if the form is valid, or false otherwise.
                                 if (_formKey.currentState!.validate()) {
@@ -154,7 +157,7 @@ class _LoginPinPageState extends State<LoginPinPage> {
                                   // );
                                 }
                               },
-                              child: widgetFont("Kirim", heading1),
+                              child: Text("Kirim", style : TextStyle(fontSize: 23, color: Colors.white),),
                             ),
                           ),
                         ),

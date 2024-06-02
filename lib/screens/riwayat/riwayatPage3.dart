@@ -113,8 +113,22 @@ class _riwayatPage3State extends State<riwayatPage3> {
                         },
                       ),
                       SizedBox(height: 20,),
-                      Center(child: widgetFont("Periode maksimal yang dapat dipilih hanya 31 hari terakhir", title2)),
-                      SizedBox(height: 20,),
+                      Center(
+                          child: Text(
+                              "Periode maksimal yang dapat dipilih hanya 31 hari terakhir",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 25))),
+                      SizedBox(height: 50,),
+                      Container(
+                        width: double.infinity,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: Color(0xff1e5fad),
+                        ),
+                        child: TextButton(
+                            onPressed: () => provider.tampilkan(),
+                            child: widgetFont('Tampilkan', jumbo1)),
+                      ),
                     ],
                   ),
                 ),

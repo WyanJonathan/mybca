@@ -26,6 +26,11 @@ Widget widgetFont(String text, String styles) {
     fontWeight = FontWeight.normal;
     fontSize = 20;
     //end of title2
+  }else if (styles == title5) {
+    color = Colors.white;
+    fontWeight = FontWeight.normal;
+    fontSize = 23;
+    //end of title2
   } else if (styles == heading1) {
     color = Colors.black54;
     fontWeight = FontWeight.bold;
@@ -49,12 +54,22 @@ Widget widgetFont(String text, String styles) {
   }else if (styles == normal1) {
     color = Colors.white;
     fontWeight = FontWeight.bold;
-    fontSize = 13;
+    fontSize = 15;
     //end of normal1
   }else if (styles == normal2) {
     color = Colors.white;
     fontWeight = FontWeight.normal;
-    fontSize = 13;
+    fontSize = 15;
+    //end of normal1
+  }else if (styles == normal3) {
+    color = Color(0xFF4D4D4D);
+    fontWeight = FontWeight.bold;
+    fontSize = 16;
+    //end of normal1
+  }else if (styles == normal4) {
+    color = Colors.white;
+    fontWeight = FontWeight.normal;
+    fontSize = 12;
     //end of normal1
   }else if (styles == jumbo1) {
     color = Colors.white;
@@ -65,6 +80,11 @@ Widget widgetFont(String text, String styles) {
     color = const Color(0xFF0060AF);
     fontWeight = FontWeight.bold;
     fontSize = 30;
+    //end of normal1
+  }else if (styles == jumbo3) {
+    color = Colors.white;
+    fontWeight = FontWeight.bold;
+    fontSize = 23;
     //end of normal1
   }else if (styles == blue) {
     color = const Color(0xFF387BFF);

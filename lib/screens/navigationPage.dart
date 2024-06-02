@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mybca_prototype/screens/home/home.dart';
 import 'package:mybca_prototype/screens/login/loginPin.dart';
 import 'package:mybca_prototype/screens/notificationPage.dart';
+import 'package:mybca_prototype/screens/profile/profile.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 
@@ -13,7 +14,7 @@ class navigationPage extends StatelessWidget {
     return [
       notificationPage(),
       Home(title: '',),
-      LoginPinPage(title: "")
+      Profile(title: ''),
     ];
   }
   List<PersistentBottomNavBarItem> _navBarsItems() {
