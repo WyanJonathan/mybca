@@ -1,6 +1,6 @@
 # mybca_prototype
 
-A new Flutter project.
+A Flutter project, dedicated to help enhance myBCA application to be user-friendly for those with low vision or no vision 
 
 ## Getting Started
 
