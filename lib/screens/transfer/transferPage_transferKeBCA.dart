@@ -140,8 +140,8 @@ class _TransferPage2State extends State<TransferPage2> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(filteredListItems[index], style: TextStyle(fontSize: 24, color: Color(0xFF0060AF), fontWeight: FontWeight.bold),),
-                                    Text(jumlah[index],style: TextStyle(fontSize: 20, color: Color(0xFF3D3D3D), fontWeight: FontWeight.bold) ),
+                                    Text(filteredListItems[index], style: const TextStyle(fontSize: 24, color: Color(0xFF0060AF), fontWeight: FontWeight.bold),),
+                                    Text(jumlah[index],style: const TextStyle(fontSize: 20, color: Color(0xFF3D3D3D), fontWeight: FontWeight.bold) ),
                                     SizedBox(height: 20,),
                                     Divider(
                                       height: 0,

@@ -45,8 +45,8 @@ class _ProfileState extends State<Profile> {
       // ),
       body: Container(
         color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: ListView(
+          // mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Stack(
               children: [
@@ -220,7 +220,7 @@ class _ProfileState extends State<Profile> {
                           ),
                         ],
                       ),
-                      // SizedBox(height: MediaQuery.of(context).size.height*0.0816),
+                      SizedBox(height: MediaQuery.of(context).size.height*0.05),
                     ],
                   )
               ),

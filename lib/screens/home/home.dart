@@ -39,167 +39,176 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: Container(
         color: Colors.white,//Color(0xFF0060AF),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: ListView(
           children: <Widget>[
-            Stack(
-              children: [
-                Container(
-                  height: 150,
-                  color: Color(0xFF0060AF),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(20.0),
-                        bottomRight: Radius.circular(0.0),
-                        topLeft: Radius.circular(20.0),
-                        bottomLeft: Radius.circular(0.0)),
-                    color: Colors.white,
+            TextButton(
+              style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                  // minimumSize: Size(50, 30),
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  alignment: Alignment.centerLeft),
+              onPressed: () => watch.obscure
+                  ? read.obscure = false
+                  : read.obscure = true,
+              child: Stack(
+                children: [
+                  Container(
+                    height: 150,
+                    color: Color(0xFF0060AF),
                   ),
-                  padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 15),
-                      Container(
-                        width: 145,
-                        color: const Color(0xFFE4EDFF),
-                        child: Row(
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(20.0),
+                          bottomRight: Radius.circular(0.0),
+                          topLeft: Radius.circular(20.0),
+                          bottomLeft: Radius.circular(0.0)),
+                      color: Colors.white,
+                    ),
+                    padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 15),
+                        Container(
+                          width: 145,
+                          color: const Color(0xFFE4EDFF),
+                          child: Row(
+                            children: [
+                              widgetFont(" HALO", title1),
+                              Semantics(
+                                  label: "ini adalah username kamu",
+                                  child: widgetFont(" USER1", blue)),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Stack(
                           children: [
-                            widgetFont(" HALO", title1),
-                            Semantics(
-                                label: "ini adalah username kamu",
-                                child: widgetFont(" USER1", blue)),
+                            const Image(image : AssetImage('assets/bg_kartu_home.png'),
+                              width: double.infinity,),
+                            Container(
+                              padding: EdgeInsets.fromLTRB(20, 10, 20, 30),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  widgetFont("Total Saldo", jumbo1),
+                                  Semantics(
+                                      label: "Ini adalah nomor rekening kamu",
+                                      child: widgetFont("Rekening 0943-XXX-XXX", orange)),
+                                  SizedBox(height: 70,),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                    read.obscure
+                                      ? Semantics(
+                                        label: "Ini adalah total saldo kamu, tetapi masih dalam mode disembunyikan, jika kamu ingin melihatnya, tekan tombol tunjukkan saldo yang ada di sebelah kanan-nya",
+                                        child: widgetFont("IDR *******", title3))
+                                      : Semantics(
+                                        label: "Ini adalah total saldo kamu, dalam mode tidak disembunyikan",
+                                        child: widgetFont("IDR 354.000", title3)),
+                                      IconButton(
+                                        icon: watch.obscure
+                                            ? const Icon(Icons.remove_red_eye, color: Colors.white,)
+                                            : const Icon(Icons.remove_red_eye_outlined, color: Colors.white,),
+                                        onPressed: () => watch.obscure
+                                            ? read.obscure = false
+                                            : read.obscure = true,
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
                           ],
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      Stack(
-                        children: [
-                          const Image(image : AssetImage('assets/bg_kartu_home.png'),
-                            width: 1000,),
-                          Container(
-                            padding: EdgeInsets.fromLTRB(20, 10, 20, 30),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                widgetFont("Total Saldo", jumbo1),
-                                Semantics(
-                                    label: "Ini adalah nomor rekening kamu",
-                                    child: widgetFont("Rekening 0943-XXX-XXX", orange)),
-                                SizedBox(height: 70,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                  read.obscure
-                                    ? Semantics(
-                                      label: "Ini adalah total saldo kamu, tetapi masih dalam mode disembunyikan, jika kamu ingin melihatnya, tekan tombol tunjukkan saldo yang ada di sebelah kanan-nya",
-                                      child: widgetFont("IDR *******", title3))
-                                    : Semantics(
-                                      label: "Ini adalah total saldo kamu, dalam mode tidak disembunyikan",
-                                      child: widgetFont("IDR 354.000", title3)),
-                                    IconButton(
-                                      icon: watch.obscure
-                                          ? const Icon(Icons.remove_red_eye, color: Colors.white,)
-                                          : const Icon(Icons.remove_red_eye_outlined, color: Colors.white,),
-                                      onPressed: () => watch.obscure
-                                          ? read.obscure = false
-                                          : read.obscure = true,
-                                    ),
-                                  ],
-                                )
-                              ],
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(13)),
+                                color: Color(0xFF0060AF),
+                              ),
+                              child: TextButton(
+                                  onPressed: () => provider.riwayatPage(),
+                                  child: Column(
+                                    children: [
+                                      const Icon(Icons.history_rounded, color: Colors.white, size: 100,),
+                                      widgetFont("  Riwayat  ", jumbo1)
+                                    ],
+                                  )),
                             ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(13)),
-                              color: Color(0xFF0060AF),
-                            ),
-                            child: TextButton(
-                                onPressed: () => provider.riwayatPage(),
-                                child: Column(
-                                  children: [
-                                    const Icon(Icons.history_rounded, color: Colors.white, size: 100,),
-                                    widgetFont("  Riwayat  ", jumbo1)
-                                  ],
-                                )),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(13)),
-                              color: Color(0xFF0060AF),
-                            ),
-                            child: TextButton(
-                                onPressed: ()  => provider.transferPage(),
-                                child: Column(
-                                  children: [
-                                    Transform.rotate(
-                                      angle: 45 * math.pi / 180,
-                                      child: const IconButton(
-                                        icon: Icon(
-                                          Icons.swap_vert_rounded,
-                                          color: Colors.white,
-                                          size: 84,
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(13)),
+                                color: Color(0xFF0060AF),
+                              ),
+                              child: TextButton(
+                                  onPressed: ()  => provider.transferPage(),
+                                  child: Column(
+                                    children: [
+                                      Transform.rotate(
+                                        angle: 45 * math.pi / 180,
+                                        child: const IconButton(
+                                          icon: Icon(
+                                            Icons.swap_vert_rounded,
+                                            color: Colors.white,
+                                            size: 84,
+                                          ),
+                                          onPressed: null,
                                         ),
-                                        onPressed: null,
                                       ),
-                                    ),
-                                    // const Icon(Icons.swap_vert_rounded, color: Colors.white, size: 100,),
-                                    widgetFont("  Transfer  ", jumbo1)
-                                  ],
-                                )
+                                      // const Icon(Icons.swap_vert_rounded, color: Colors.white, size: 100,),
+                                      widgetFont("  Transfer  ", jumbo1)
+                                    ],
+                                  )
+                              ),
+                            )
+                          ],
+                        ),
+                        const SizedBox(height: 20,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(13)),
+                                color: Color(0xFF0060AF),
+                              ),
+                              child: TextButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    children: [
+                                      // const Icon(Icons.qr_code, color: Colors.white, size: 100,),
+                                      const Icon(CupertinoIcons.qrcode, color: Colors.white, size: 100,),
+                                      widgetFont("    QRIS     ", jumbo1)
+                                    ],
+                                  )),
                             ),
-                          )
-                        ],
-                      ),
-                      const SizedBox(height: 20,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(13)),
-                              color: Color(0xFF0060AF),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(13)),
+                                color: Color(0xFF0060AF),
+                              ),
+                              child: TextButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    children: [
+                                      const Icon(CupertinoIcons.square_grid_2x2_fill, color: Colors.white, size: 100,),
+                                      widgetFont("   Lainnya  ", jumbo1)
+                                    ],
+                                  )),
                             ),
-                            child: TextButton(
-                                onPressed: () {},
-                                child: Column(
-                                  children: [
-                                    // const Icon(Icons.qr_code, color: Colors.white, size: 100,),
-                                    const Icon(CupertinoIcons.qrcode, color: Colors.white, size: 100,),
-                                    widgetFont("    QRIS     ", jumbo1)
-                                  ],
-                                )),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(13)),
-                              color: Color(0xFF0060AF),
-                            ),
-                            child: TextButton(
-                                onPressed: () {},
-                                child: Column(
-                                  children: [
-                                    const Icon(CupertinoIcons.square_grid_2x2_fill, color: Colors.white, size: 100,),
-                                    widgetFont("   Lainnya  ", jumbo1)
-                                  ],
-                                )),
-                          ),
-                        ],
-                      ),
-                      // SizedBox(height: MediaQuery.of(context).size.height*0.06345),
-                    ],
-                  )
+                          ],
+                        ),
+                        SizedBox(height: MediaQuery.of(context).size.height*0.05),
+                      ],
+                    )
+                ),
+                ]
               ),
-              ]
             ),
           ],
         ),
