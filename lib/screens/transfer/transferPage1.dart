@@ -18,16 +18,6 @@ class _transferPageState extends State<transferPage> {
   @override
   Widget build(BuildContext context) {
     TransferProvider provider = Modular.get<TransferProvider>();
-    final read = context.read<TransferProvider>();
-    final watch = context.watch<TransferProvider>();
-
-    const String norek = "123-456-789";
-
-    final List<String> entries = <String>['05/25 CELINE DAVINA TRSF E-BANKING CR', 'TRANSFER KE 201 REGINE HA M-BCA BI-FAST DB', '05/12 ADI KRESNA TRSF E-BANKING CR', '05/04 RAHMA SARI TRSF E-BANKING CR',  '05/02 PAK STANLEY A M TRSF E-BANKING CR', '05/25 ZAHID TRSF E-BANKING CR','05/25 CELINE DAVINA TRSF E-BANKING CR'];
-    final List<String> jumlah = <String>['150.000,00', '250.000,00', '390.000,00', '50.000,00','250.000,00', '390.000,00', '50.000,00' ];
-    final List<String> bulan = <String>['Mei','Mei','Mei','Mei','Mei','Mei','Mei'];
-    final List<int> date = <int>[31,28,22,18,09,05,02];
-    final List<int> status = <int>[1,0,1,1,0,1,0];
 
     return Scaffold(
       appBar: AppBar(

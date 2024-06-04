@@ -186,6 +186,8 @@ class _LoginPinPageState extends State<LoginPinPage> {
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width,
+                            height: 90,
+                            // height: MediaQuery.of(context).size.height*0.03,
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               child: ElevatedButton(

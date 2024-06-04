@@ -13,10 +13,12 @@ import 'package:mybca_prototype/screens/riwayat/riwayatPage2.dart';
 import 'package:mybca_prototype/screens/riwayat/riwayatPage3.dart';
 import 'package:mybca_prototype/screens/riwayat/riwayatPage4.dart';
 import 'package:mybca_prototype/screens/riwayat/riwayat_provider.dart';
+import 'package:mybca_prototype/screens/transfer/bukti_transaksi.dart';
 import 'package:mybca_prototype/screens/transfer/transferPage1.dart';
 import 'package:mybca_prototype/screens/transfer/transferPage_dafterNorekBaru.dart';
 import 'package:mybca_prototype/screens/transfer/transferPage_transferKeBCA.dart';
 import 'package:mybca_prototype/screens/transfer/transferPage_transferKeOrang1.dart';
+import 'package:mybca_prototype/screens/transfer/transferPage_Pin.dart';
 import 'package:mybca_prototype/screens/transfer/transfer_provider.dart';
 
 
@@ -48,6 +50,8 @@ class AppModule extends Module {
     r.child('/transferPage2', child: (context) => const TransferPage2(), transition: TransitionType.rightToLeftWithFade);
     r.child('/transferPage3', child: (context) => const TransferPage3(), transition: TransitionType.rightToLeftWithFade);
     r.child('/transferPage4', child: (context) => const TransferPage4(), transition: TransitionType.rightToLeftWithFade);
+    r.child('/transferPagePin', child: (context) => const transferPagePin(title: '',), transition: TransitionType.rightToLeftWithFade);
+    r.child('/buktiTransfer', child: (context) => const buktiTransfer(), transition: TransitionType.rightToLeftWithFade);
 
   }
 }

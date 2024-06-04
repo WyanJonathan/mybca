@@ -15,17 +15,6 @@ class TransferPage2 extends StatefulWidget {
 }
 
 class _TransferPage2State extends State<TransferPage2> {
-  static const List<String> listItems = <String>[
-    'Celine Davina Masko',
-    'Dofan Claudio Sihotang',
-    'I Dewa Made Adi Kresna',
-    'Alexandra Adira',
-    'Regine Angelina Halim',
-    'Pak Stanley A. Makalew',
-  ];
-  final List<String> jumlah = <String>['11111', '2435423', '456789', '3087534', '567890', '987654'];
-
-  List<String> filteredListItems = listItems;
 
   @override
   Widget build(BuildContext context) {
@@ -75,12 +64,15 @@ class _TransferPage2State extends State<TransferPage2> {
                         child: Column(
                           children: [
                             TextField(
+                              style: TextStyle(fontWeight: FontWeight.normal, fontSize: 28),
                               decoration: InputDecoration(
-                                hintText: 'Enter a name',
+                                hintText: 'Cari Nama',
+                                border: InputBorder.none,
+                                hintStyle: TextStyle(fontSize: 28, color: Color(0xFFA7A7A7)),
                               ),
                               onChanged: (text) {
                                 setState(() {
-                                  filteredListItems = listItems.where((item) => item.toLowerCase().contains(text.toLowerCase())).toList();
+                                  read.filteredListItems = watch.listItems.where((item) => item.toLowerCase().contains(text.toLowerCase())).toList();
                                 });
                               },
                             ),
@@ -127,11 +119,11 @@ class _TransferPage2State extends State<TransferPage2> {
                       //     ),
                       //   ),
                       // ),
-                      child: (filteredListItems.isNotEmpty)
+                      child: (watch.filteredListItems.isNotEmpty)
                         ? Container(
                           height: MediaQuery.of(context).size.height,
                           child: ListView.builder(
-                            itemCount: filteredListItems.length,
+                            itemCount: watch.filteredListItems.length,
                             physics: NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
                               return ListTile(
@@ -140,8 +132,8 @@ class _TransferPage2State extends State<TransferPage2> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(filteredListItems[index], style: const TextStyle(fontSize: 24, color: Color(0xFF0060AF), fontWeight: FontWeight.bold),),
-                                    Text(jumlah[index],style: const TextStyle(fontSize: 20, color: Color(0xFF3D3D3D), fontWeight: FontWeight.bold) ),
+                                    Text(watch.filteredListItems[index], style: const TextStyle(fontSize: 24, color: Color(0xFF0060AF), fontWeight: FontWeight.bold),),
+                                    Text(watch.nomor_rekening[index],style: const TextStyle(fontSize: 20, color: Color(0xFF3D3D3D), fontWeight: FontWeight.bold) ),
                                     SizedBox(height: 20,),
                                     Divider(
                                       height: 0,
@@ -151,8 +143,8 @@ class _TransferPage2State extends State<TransferPage2> {
                                   ],
                                 ),
                                 onTap: () {
-                                  print('The ${filteredListItems[index]} was selected');
-                                  provider.transferKe(filteredListItems[index], jumlah[index]);
+                                  print('The ${watch.filteredListItems[index]} was selected');
+                                  provider.transferKe(watch.filteredListItems[index], watch.nomor_rekening[index]);
                                   // Perform your selection action here
                                 },
                               );
@@ -164,10 +156,10 @@ class _TransferPage2State extends State<TransferPage2> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(listItems[index],
+                                Text(watch.listItems[index],
                                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                                     softWrap: true),
-                                Text('${jumlah[index]}', style: TextStyle(color: Color(0xFF3D3D3D), fontSize: 20),)
+                                Text('${watch.nomor_rekening[index]}', style: TextStyle(color: Color(0xFF3D3D3D), fontSize: 20),)
                               ],
                             ),
                           ),
