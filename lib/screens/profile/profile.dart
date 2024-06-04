@@ -44,179 +44,187 @@ class _ProfileState extends State<Profile> {
       //   ),
       // ),
       body: Container(
-        color: Color(0xFF0060AF),
+        color: Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Container(
-                width: MediaQuery.of(context).size.width,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(20.0),
-                      bottomRight: Radius.circular(0.0),
-                      topLeft: Radius.circular(20.0),
-                      bottomLeft: Radius.circular(0.0)),
-                  color: Colors.white,
-                ),
-                padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 15),
-                    widgetFont("Jenis Kartu", normal3),
-                    SizedBox(height: 5),
-                    Container(
-                      width: 270,
-                      color: const Color(0xFFE4EDFF),
-                      child: widgetFont(" Paspor BCA GPN Xpresi", blue),
-                    ),
-                    const SizedBox(height: 10),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 0,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
+            Stack(
+              children: [
+              Container(
+                height: 150,
+                color: Color(0xFF0060AF),
+              ),
+              Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(20.0),
+                        bottomRight: Radius.circular(0.0),
+                        topLeft: Radius.circular(20.0),
+                        bottomLeft: Radius.circular(0.0)),
+                    color: Colors.white,
+                  ),
+                  padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 15),
+                      widgetFont("Jenis Kartu", normal3),
+                      SizedBox(height: 5),
+                      Container(
+                        width: 270,
+                        color: const Color(0xFFE4EDFF),
+                        child: widgetFont(" Paspor BCA GPN Xpresi", blue),
                       ),
-                      child: Image(image : AssetImage('assets/black_card_bca.png'),
-                        width: 1500,),
-                    ),
-                    const SizedBox(height: 10),
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blueAccent, width: 6),
-                        borderRadius: BorderRadius.circular(10),
+                      const SizedBox(height: 10),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 0,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Image(image : AssetImage('assets/black_card_bca.png'),
+                          width: 1500,),
                       ),
-                      child: TextButton(
-                          onPressed: () {},
-                          child: widgetFont('Lihat Detail Kartu', jumbo2)),
-                    ),
-                    const SizedBox(height: 20),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xFF0060AF),
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 4,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
+                      const SizedBox(height: 10),
+                      Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blueAccent, width: 6),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: TextButton(
+                            onPressed: () {},
+                            child: widgetFont('Lihat Detail Kartu', jumbo2)),
                       ),
-                      padding: EdgeInsets.fromLTRB(20,10,20,10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      const SizedBox(height: 20),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Color(0xFF0060AF),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 4,
+                              offset: Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        padding: EdgeInsets.fromLTRB(20,10,20,10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                widgetFont("Card Number", normal1),
+                                widgetFont("${watch.nokartu}", jumbo3),
+                              ],
+                            ),
+                            IconButton(
+                                onPressed: () => {
+                                  Clipboard.setData(ClipboardData(text: watch.nokartu))
+                                      .then((value) { Asuka.showSnackBar(SnackBar(content: Text("Nomor Rekening Telah Di Salin"))); // -> show a notification
+                                  })
+                                },
+                                icon: const Icon(Icons.copy, size: 40, color: Color(0xFF99BFDF),)
+                            )
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              widgetFont("Card Number", normal1),
-                              widgetFont("${watch.norek}", jumbo3),
-                            ],
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(13)),
+                                color: Color(0xFF0060AF),
+                              ),
+                              child: TextButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    children: [
+                                      const Icon(Icons.settings, color: Colors.white, size: 35,),
+                                      widgetFont("Kontrol", normal4)
+                                    ],
+                                  )),
+                            ),
                           ),
-                          IconButton(
-                              onPressed: () => {
-                                Clipboard.setData(ClipboardData(text: watch.norek))
-                                    .then((value) { Asuka.showSnackBar(SnackBar(content: Text("Nomor Rekening Telah Di Salin"))); // -> show a notification
-                                })
-                              },
-                              icon: const Icon(Icons.copy, size: 40, color: Color(0xFF99BFDF),)
-                          )
+                          const SizedBox(width: 5),
+                          Expanded(
+                            flex : 1,
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(13)),
+                                color: Color(0xFF0060AF),
+                              ),
+                              child: TextButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    children: [
+                                      const Icon(Icons.tune, color: Colors.white, size: 35,),
+                                      widgetFont("Atur Limit", normal4)
+                                    ],
+                                  )),
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(13)),
+                                color: Color(0xFF0060AF),
+                              ),
+                              child: TextButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    children: [
+                                      const Icon(Icons.not_interested, color: Colors.white, size: 35,),
+                                      widgetFont("Blokir", normal4)
+                                    ],
+                                  )),
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Expanded(
+                            flex : 1,
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(13)),
+                                color: Color(0xFF0060AF),
+                              ),
+                              child: TextButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    children: [
+                                      const Icon(Icons.credit_card, color: Colors.white, size: 35,),
+                                      widgetFont("Ganti Kartu", normal4)
+                                    ],
+                                  )),
+                            ),
+                          ),
                         ],
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(13)),
-                              color: Color(0xFF0060AF),
-                            ),
-                            child: TextButton(
-                                onPressed: () {},
-                                child: Column(
-                                  children: [
-                                    const Icon(Icons.settings, color: Colors.white, size: 35,),
-                                    widgetFont("Kontrol", normal4)
-                                  ],
-                                )),
-                          ),
-                        ),
-                        const SizedBox(width: 5),
-                        Expanded(
-                          flex : 1,
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(13)),
-                              color: Color(0xFF0060AF),
-                            ),
-                            child: TextButton(
-                                onPressed: () {},
-                                child: Column(
-                                  children: [
-                                    const Icon(Icons.tune, color: Colors.white, size: 35,),
-                                    widgetFont("Atur Limit", normal4)
-                                  ],
-                                )),
-                          ),
-                        ),
-                        const SizedBox(width: 5),
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(13)),
-                              color: Color(0xFF0060AF),
-                            ),
-                            child: TextButton(
-                                onPressed: () {},
-                                child: Column(
-                                  children: [
-                                    const Icon(Icons.not_interested, color: Colors.white, size: 35,),
-                                    widgetFont("Blokir", normal4)
-                                  ],
-                                )),
-                          ),
-                        ),
-                        const SizedBox(width: 5),
-                        Expanded(
-                          flex : 1,
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(13)),
-                              color: Color(0xFF0060AF),
-                            ),
-                            child: TextButton(
-                                onPressed: () {},
-                                child: Column(
-                                  children: [
-                                    const Icon(Icons.credit_card, color: Colors.white, size: 35,),
-                                    widgetFont("Ganti Kartu", normal4)
-                                  ],
-                                )),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height*0.1255),
-                  ],
-                )
+                      // SizedBox(height: MediaQuery.of(context).size.height*0.0816),
+                    ],
+                  )
+              ),
+              ]
             ),
           ],
         ),

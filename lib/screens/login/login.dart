@@ -45,7 +45,7 @@ class _LoginState extends State<Login> {
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Color(0xFF0060AF),
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Semantics(
@@ -57,113 +57,121 @@ class _LoginState extends State<Login> {
         ),
       ),
       body: Container(
-        color: Color(0xFF0060AF),
+        color: Colors.white,//Color(0xFF0060AF),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20.0),
-                    bottomRight: Radius.circular(0.0),
-                    topLeft: Radius.circular(20.0),
-                    bottomLeft: Radius.circular(0.0)),
-                color: Colors.white,
-              ),
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 10),
-                  Semantics(
-                      label: "Ini nama akun kamu",
-                      readOnly: true,
-                      child: widgetFont("User1 test", title1)),
-                  Semantics(
-                      label: 'Akun ini dibuat dan diperuntukkan prototype testing saja, ini adalah kode akunnya',
-                      child: widgetFont("T****G", title2)),
-                  const SizedBox(height: 130),
-                  Semantics(
-                    label: 'Untuk masuk ke akun kamu, kamu bisa menggunakan dua cara yaitu pin dan fingerprint',
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: TextButton(
-                          onPressed: () => provider.loginPinPage(),
-                          child: Container(
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(10.0),
-                                    bottomRight: Radius.circular(10.0),
-                                    topLeft: Radius.circular(10.0),
-                                    bottomLeft: Radius.circular(10.0)),
-                                color: Color(0xff1e5fad),
-                              ),
-                            padding: const EdgeInsets.symmetric(horizontal: 140, vertical: 10),
-                              child: widgetFont('Pin', jumbo1)))
-                      ),
+            Stack(
+              children: [
+                Container(
+                  height: 150,
+                  color: Color(0xFF0060AF),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(20.0),
+                        bottomRight: Radius.circular(0.0),
+                        topLeft: Radius.circular(20.0),
+                        bottomLeft: Radius.circular(0.0)),
+                    color: Colors.white,
                   ),
-                  SizedBox(height: 20,),
-                  Center(child: widgetFont("Atau", title1)),
-                  SizedBox(height: 20,),
-                  // Container(
-                  //   decoration: const BoxDecoration(
-                  //     borderRadius: BorderRadius.only(
-                  //         topRight: Radius.circular(20.0),
-                  //         bottomRight: Radius.circular(0.0),
-                  //         topLeft: Radius.circular(20.0),
-                  //         bottomLeft: Radius.circular(0.0)),
-                  //     color: Colors.white,
-                  //   ),
-                  //   width: MediaQuery.of(context).size.width,
-                  //   child: TextButton(
-                  //       onPressed: () => provider.loginPinPage(),
-                  //       child: const Image(image: AssetImage('assets/fingerprint.png'))
-                  //   ),
-                  // ),
-                  Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20.0),
-                          bottomRight: Radius.circular(0.0),
-                          topLeft: Radius.circular(20.0),
-                          bottomLeft: Radius.circular(0.0)),
-                      color: Colors.white,
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                    child: Semantics(
-                      label: "jika kamu mau masuk dengan fingerprint pilih ini",
-                      child: TextButton(
-                          onPressed: () async {
-                            if (!_isAuthenticated){
-                              final bool canAuthenticateWithBiometrics = await _auth.canCheckBiometrics;
-                              if(canAuthenticateWithBiometrics) {
-                                try{
-                                  final bool didAuthenthicate = await _auth.authenticate(
-                                      localizedReason: "Please Authenthicate So We Can Log you In",
-                                      options: const AuthenticationOptions(
-                                        biometricOnly: true,
-                                      ));
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 10),
+                      Semantics(
+                          label: "Ini nama akun kamu",
+                          readOnly: true,
+                          child: widgetFont("User1 test", title1)),
+                      Semantics(
+                          label: 'Akun ini dibuat dan diperuntukkan prototype testing saja, ini adalah kode akunnya',
+                          child: widgetFont("T****G", title2)),
+                      const SizedBox(height: 130),
+                      Semantics(
+                        label: 'Untuk masuk ke akun kamu, kamu bisa menggunakan dua cara yaitu pin dan fingerprint',
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: TextButton(
+                              onPressed: () => provider.loginPinPage(),
+                              child: Container(
+                                  decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(10.0),
+                                        bottomRight: Radius.circular(10.0),
+                                        topLeft: Radius.circular(10.0),
+                                        bottomLeft: Radius.circular(10.0)),
+                                    color: Color(0xff1e5fad),
+                                  ),
+                                padding: const EdgeInsets.symmetric(horizontal: 140, vertical: 10),
+                                  child: widgetFont('Pin', jumbo1)))
+                          ),
+                      ),
+                      SizedBox(height: 20,),
+                      Center(child: widgetFont("Atau", title1)),
+                      SizedBox(height: 20,),
+                      // Container(
+                      //   decoration: const BoxDecoration(
+                      //     borderRadius: BorderRadius.only(
+                      //         topRight: Radius.circular(20.0),
+                      //         bottomRight: Radius.circular(0.0),
+                      //         topLeft: Radius.circular(20.0),
+                      //         bottomLeft: Radius.circular(0.0)),
+                      //     color: Colors.white,
+                      //   ),
+                      //   width: MediaQuery.of(context).size.width,
+                      //   child: TextButton(
+                      //       onPressed: () => provider.loginPinPage(),
+                      //       child: const Image(image: AssetImage('assets/fingerprint.png'))
+                      //   ),
+                      // ),
+                      Container(
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(20.0),
+                              bottomRight: Radius.circular(0.0),
+                              topLeft: Radius.circular(20.0),
+                              bottomLeft: Radius.circular(0.0)),
+                          color: Colors.white,
+                        ),
+                        width: MediaQuery.of(context).size.width,
+                        child: Semantics(
+                          label: "jika kamu mau masuk dengan fingerprint pilih ini",
+                          child: TextButton(
+                              onPressed: () async {
+                                if (!_isAuthenticated){
+                                  final bool canAuthenticateWithBiometrics = await _auth.canCheckBiometrics;
+                                  if(canAuthenticateWithBiometrics) {
+                                    try{
+                                      final bool didAuthenthicate = await _auth.authenticate(
+                                          localizedReason: "Please Authenthicate So We Can Log you In",
+                                          options: const AuthenticationOptions(
+                                            biometricOnly: true,
+                                          ));
+                                      setState(() {
+                                        _isAuthenticated = didAuthenthicate;
+                                      });
+                                      provider.navigationPage();
+                                    } catch(e) {print (e);}
+                                  }
+                                }else{
                                   setState(() {
-                                    _isAuthenticated = didAuthenthicate;
+                                    _isAuthenticated = false;
                                   });
-                                  provider.navigationPage();
-                                } catch(e) {print (e);}
-                              }
-                            }else{
-                              setState(() {
-                                _isAuthenticated = false;
-                              });
-                            }
+                                }
 
-                          },
-                          child: const Image(image: AssetImage('assets/fingerprint.png'))
+                              },
+                              child: const Image(image: AssetImage('assets/fingerprint.png'))
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  const SizedBox(height: 206),
-                ],
-              )
+                      // const SizedBox(height: 206),
+                    ],
+                  )
+                 ),
+              ]
             ),
           ],
         ),

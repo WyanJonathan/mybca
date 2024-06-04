@@ -49,32 +49,51 @@ class RiwayatProvider with ChangeNotifier {
     Modular.to.pushNamed('/riwayatPage2');
   }
 
+  // void riwayatPage2(String? month) {
+  //   Map<String, dynamic> detail = {'month': month};
+  //   Modular.to.pushNamed('/riwayatPage2', arguments: detail );
+  // }
+
   void riwayatPage3() {
     Modular.to.pushNamed('/riwayatPage3');
   }
 
-  void tampilkan() {
-    Asuka.showDialog(
-      builder: (context) => AlertDialog(
-        title: const Text('Informasi Riwayat Transaksi'),
-        content: const Text('Belum ada desainnya'),
-        actions: [
-          // TextButton(
-          //   onPressed: () {
-          //     Navigator.pop(context);
-          //   },
-          //   child: const Text('Cancel'),
-          // ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text('Ok'),
-          ),
-        ],
-      ),
-    );
+  // void riwayatPage3(String? month) {
+  //   Map<String, dynamic> detail = {'month': month};
+  //   Modular.to.pushNamed('/riwayatPage3', arguments: detail );
+  // }
+
+  // void tampilkan(start, end, month) {
+  //   Modular.to.pushNamed('/riwayatPage4');
+  // }
+
+  void tampilkan(DateTime? start, DateTime? end, String? month) {
+    Map<String, dynamic> detail = {'start' : start, 'end' : end, 'month': month};
+    Modular.to.pushNamed('/riwayatPage4', arguments: detail );
   }
+
+  // void tampilkan() {
+  //   Asuka.showDialog(
+  //     builder: (context) => AlertDialog(
+  //       title: const Text('Informasi Riwayat Transaksi'),
+  //       content: const Text('Belum ada desainnya'),
+  //       actions: [
+  //         // TextButton(
+  //         //   onPressed: () {
+  //         //     Navigator.pop(context);
+  //         //   },
+  //         //   child: const Text('Cancel'),
+  //         // ),
+  //         TextButton(
+  //           onPressed: () {
+  //             Navigator.pop(context);
+  //           },
+  //           child: const Text('Ok'),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   // void home() {
   //   // Modular.to.pushNamed('/home');

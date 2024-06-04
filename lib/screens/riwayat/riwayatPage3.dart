@@ -1,6 +1,8 @@
+import 'package:asuka/asuka.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intl/intl.dart';
 import 'package:mybca_prototype/screens/riwayat/riwayat_provider.dart';
 import 'package:mybca_prototype/utils/fonts.dart';
 import 'package:mybca_prototype/utils/string_const.dart';
@@ -21,6 +23,7 @@ class _riwayatPage3State extends State<riwayatPage3> {
   // var to store date
   DateTime? _rangeStart;
   DateTime? _rangeEnd;
+  String? month;
 
   @override
   void initState() {
@@ -45,6 +48,7 @@ class _riwayatPage3State extends State<riwayatPage3> {
       _rangeEnd = end;
       print(_rangeStart);
       print(_rangeEnd);
+      month = DateFormat.MMMM().format(_rangeStart!);
     });
   }
 
@@ -56,10 +60,13 @@ class _riwayatPage3State extends State<riwayatPage3> {
 
     return Scaffold(
         appBar: AppBar(
+            iconTheme: IconThemeData(
+              color: Colors.white, //change your color here
+            ),
           // TRY THIS: Try changing the color here to a specific color (to
           // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
           // change color while the other colors stay the same.
-            backgroundColor: Theme.of(context).colorScheme.primary,
+            backgroundColor: Color(0xFF0060AF),
             // Here we take the value from the MyHomePage object that was created by
             // the App.build method, and use it to set our appbar title.
             title: widgetFont("Riwayat", title4)
@@ -126,7 +133,26 @@ class _riwayatPage3State extends State<riwayatPage3> {
                           color: Color(0xff1e5fad),
                         ),
                         child: TextButton(
-                            onPressed: () => provider.tampilkan(),
+                            onPressed: () {
+                              if (month == null) {
+                                Asuka.showDialog(
+                                  builder: (context) => AlertDialog(
+                                    title: const Text('Warning'),
+                                    content: const Text('Pick A Start Date And End Date'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text('Ok'),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              } else{
+                                provider.tampilkan(_rangeStart, _rangeEnd, month);
+                              }
+                            },
                             child: widgetFont('Tampilkan', jumbo1)),
                       ),
                     ],

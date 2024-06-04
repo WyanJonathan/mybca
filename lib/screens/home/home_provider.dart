@@ -17,6 +17,10 @@ class HomeProvider with ChangeNotifier {
     Modular.to.pushNamed('/riwayatPage');
   }
 
+  void transferPage() {
+    Modular.to.pushNamed('/transferPage');
+  }
+
 
 /*  @override
   void dispose() {

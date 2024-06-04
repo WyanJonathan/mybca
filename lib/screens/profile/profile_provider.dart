@@ -4,14 +4,14 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 class ProfileProvider with ChangeNotifier {
 
-  late String _norek = "123-456-789";
+  late String _nokartu = "4691 5112 3456 7890";
 
 
-  String get norek => _norek;
+  String get nokartu => _nokartu;
 
 
-  set norek(String value) {
-    _norek = value;
+  set nokartu(String value) {
+    _nokartu = value;
     notifyListeners();
   }
 

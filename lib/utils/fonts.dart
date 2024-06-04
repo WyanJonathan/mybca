@@ -86,6 +86,11 @@ Widget widgetFont(String text, String styles) {
     fontWeight = FontWeight.bold;
     fontSize = 23;
     //end of normal1
+  }else if (styles == jumbo4) {
+    color = Colors.white;
+    fontWeight = FontWeight.bold;
+    fontSize = 30;
+    //end of normal1
   }else if (styles == blue) {
     color = const Color(0xFF387BFF);
     fontWeight = FontWeight.bold;

@@ -15,6 +15,9 @@ class riwayatPage2 extends StatefulWidget {
 }
 
 class _riwayatPage2State extends State<riwayatPage2> {
+  DateTime? start = DateTime.now();
+  DateTime? end = DateTime.now();
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +27,13 @@ class _riwayatPage2State extends State<riwayatPage2> {
 
     return Scaffold(
         appBar: AppBar(
+            iconTheme: IconThemeData(
+              color: Colors.white, //change your color here
+            ),
           // TRY THIS: Try changing the color here to a specific color (to
           // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
           // change color while the other colors stay the same.
-            backgroundColor: Theme.of(context).colorScheme.primary,
+            backgroundColor: Color(0xFF0060AF),
             // Here we take the value from the MyHomePage object that was created by
             // the App.build method, and use it to set our appbar title.
             title: widgetFont("Riwayat", title4)
@@ -90,7 +96,7 @@ class _riwayatPage2State extends State<riwayatPage2> {
                           color: Colors.white,
                         ),
                         child: TextButton(
-                            onPressed: () => provider.riwayatPage2(),
+                            onPressed: () => provider.tampilkan(start,end,"MEI"),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -108,7 +114,7 @@ class _riwayatPage2State extends State<riwayatPage2> {
                           color: Colors.white,
                         ),
                         child: TextButton(
-                            onPressed: () => provider.riwayatPage2(),
+                            onPressed: () => provider.tampilkan(start,end,"APRIL"),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -126,7 +132,7 @@ class _riwayatPage2State extends State<riwayatPage2> {
                           color: Colors.white,
                         ),
                         child: TextButton(
-                            onPressed: () => provider.riwayatPage2(),
+                            onPressed: () => provider.tampilkan(start, end, "MARET"),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

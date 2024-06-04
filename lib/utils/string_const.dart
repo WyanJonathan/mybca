@@ -18,3 +18,4 @@ const blue2 = 'blue';
 const jumbo1 = 'jumbo1';
 const jumbo2 = 'jumbo2';
 const jumbo3 = 'jumbo3';
+const jumbo4 = 'jumbo4';
