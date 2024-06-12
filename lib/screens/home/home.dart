@@ -178,7 +178,7 @@ class _HomeState extends State<Home> {
                                 color: Color(0xFF0060AF),
                               ),
                               child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: ()  => provider.qrisPage(),
                                   child: Column(
                                     children: [
                                       // const Icon(Icons.qr_code, color: Colors.white, size: 100,),

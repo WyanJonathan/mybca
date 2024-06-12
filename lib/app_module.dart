@@ -8,6 +8,8 @@ import 'package:mybca_prototype/screens/navigationPage.dart';
 import 'package:mybca_prototype/screens/notificationPage.dart';
 import 'package:mybca_prototype/screens/profile/profile.dart';
 import 'package:mybca_prototype/screens/profile/profile_provider.dart';
+import 'package:mybca_prototype/screens/qris/qris.dart';
+import 'package:mybca_prototype/screens/qris/qris_provider.dart';
 import 'package:mybca_prototype/screens/riwayat/riwayatPage.dart';
 import 'package:mybca_prototype/screens/riwayat/riwayatPage2.dart';
 import 'package:mybca_prototype/screens/riwayat/riwayatPage3.dart';
@@ -31,7 +33,7 @@ class AppModule extends Module {
     i.addSingleton(RiwayatProvider.new);
     i.addSingleton(ProfileProvider.new);
     i.addSingleton(TransferProvider.new);
-
+    i.addSingleton(QrisProvider.new);
   }
 
   @override
@@ -52,6 +54,6 @@ class AppModule extends Module {
     r.child('/transferPage4', child: (context) => const TransferPage4(), transition: TransitionType.rightToLeftWithFade);
     r.child('/transferPagePin', child: (context) => const transferPagePin(title: '',), transition: TransitionType.rightToLeftWithFade);
     r.child('/buktiTransfer', child: (context) => const buktiTransfer(), transition: TransitionType.rightToLeftWithFade);
-
+    r.child('/QRScannerPage', child: (context) => const QRScannerPage(), transition: TransitionType.rightToLeftWithFade);
   }
 }
