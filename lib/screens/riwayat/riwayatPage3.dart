@@ -1,6 +1,7 @@
 import 'package:asuka/asuka.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mybca_prototype/screens/riwayat/riwayat_provider.dart';
@@ -54,6 +55,9 @@ class _riwayatPage3State extends State<riwayatPage3> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     RiwayatProvider provider = Modular.get<RiwayatProvider>();
     final read = context.read<RiwayatProvider>();
     final watch = context.watch<RiwayatProvider>();

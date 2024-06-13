@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mybca_prototype/screens/home/home.dart';
 import 'package:mybca_prototype/screens/login/loginPin.dart';
 import 'package:mybca_prototype/screens/notificationPage.dart';
@@ -84,6 +85,9 @@ class navigationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: BottomNavigationBarExample(),
@@ -130,6 +134,9 @@ class _BottomNavigationBarExampleState
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF0060AF),
@@ -162,15 +169,15 @@ class _BottomNavigationBarExampleState
                   items: const <BottomNavigationBarItem>[
                     BottomNavigationBarItem(
                       icon: Icon(CupertinoIcons.bell),
-                      label: 'Notification',
+                      label: 'Notifikasi',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(CupertinoIcons.home),
-                      label: 'Home',
+                      label: 'Beranda',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(CupertinoIcons.person),
-                      label: 'Profile',
+                      label: 'Profil',
                     ),
                   ],
                   backgroundColor:Color(0xFF0060AF),

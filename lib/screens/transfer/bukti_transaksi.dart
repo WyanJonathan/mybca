@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:mybca_prototype/screens/transfer/transfer_provider.dart';
@@ -19,6 +20,9 @@ class _buktiTransferState extends State<buktiTransfer> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return Scaffold(
       body: ListView(
           padding: EdgeInsets.zero,

@@ -20,6 +20,10 @@ import 'package:mybca_prototype/screens/transfer/transferPage_transferKeBCA.dart
 import 'package:mybca_prototype/screens/transfer/transferPage_transferKeOrang1.dart';
 import 'package:mybca_prototype/screens/transfer/transferPage_Pin.dart';
 import 'package:mybca_prototype/screens/transfer/transfer_provider.dart';
+import 'package:mybca_prototype/screens/qris/pembayaran_qris_page.dart';
+import 'package:mybca_prototype/screens/qris/qris.dart';
+import 'package:mybca_prototype/screens/qris/qris_bayar.dart';
+import 'package:mybca_prototype/screens/qris/qris_provider.dart';
 
 
 class AppModule extends Module {
@@ -31,7 +35,7 @@ class AppModule extends Module {
     i.addSingleton(RiwayatProvider.new);
     i.addSingleton(ProfileProvider.new);
     i.addSingleton(TransferProvider.new);
-
+    i.addSingleton(QrisProvider.new);
   }
 
   @override
@@ -52,6 +56,14 @@ class AppModule extends Module {
     r.child('/transferPage4', child: (context) => const TransferPage4(), transition: TransitionType.rightToLeftWithFade);
     r.child('/transferPagePin', child: (context) => const transferPagePin(title: '',), transition: TransitionType.rightToLeftWithFade);
     r.child('/buktiTransfer', child: (context) => const buktiTransfer(), transition: TransitionType.rightToLeftWithFade);
-
+    r.child('/QRScannerPage',
+        child: (context) => const QRScannerPage(),
+        transition: TransitionType.rightToLeftWithFade);
+    r.child('/PembayaranQRISPage',
+        child: (context) => const PembayaranQrisPage(),
+        transition: TransitionType.rightToLeftWithFade);
+    r.child('/QrisBayarPage',
+        child: (context) => const QrisBayarPage(),
+        transition: TransitionType.rightToLeftWithFade);
   }
 }

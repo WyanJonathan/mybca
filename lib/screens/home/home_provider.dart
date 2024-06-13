@@ -21,6 +21,10 @@ class HomeProvider with ChangeNotifier {
     Modular.to.pushNamed('/transferPage');
   }
 
+  void qrisPage() {
+    Modular.to.pushNamed('/QRScannerPage');
+  }
+
 
 /*  @override
   void dispose() {

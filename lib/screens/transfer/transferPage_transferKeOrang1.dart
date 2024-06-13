@@ -24,6 +24,9 @@ class _TransferPage3State extends State<TransferPage3> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     TransferProvider provider = Modular.get<TransferProvider>();
     final watch = context.watch<TransferProvider>();
     final read = context.read<TransferProvider>();
@@ -64,57 +67,92 @@ class _TransferPage3State extends State<TransferPage3> {
                       widgetFont("${detail['name']}", jumbo2),
                       widgetFont("${detail['norek']}", title2),
                       SizedBox(height: 20,),
-                      Row(
-                        children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            widgetFont("Mata Uang", normal3),
-                            DropdownMenu(
-                              label: widgetFont('IDR', normal2),
-                                controller: watch.mataUang,
-                              enableSearch: false,
-                                dropdownMenuEntries: const <DropdownMenuEntry<Color>> [
-                              DropdownMenuEntry(value: Colors.red, label: "IDR"),
-                            ]),
+                      // Row(
+                      //   children: [
+                      //   Column(
+                      //     crossAxisAlignment: CrossAxisAlignment.start,
+                      //     children: [
+                      //       widgetFont("Mata Uang", normal3),
+                      //       DropdownMenu(
+                      //         label: widgetFont('IDR', normal2),
+                      //           controller: watch.mataUang,
+                      //         enableSearch: false,
+                      //           dropdownMenuEntries: const <DropdownMenuEntry<Color>> [
+                      //         DropdownMenuEntry(value: Colors.red, label: "IDR"),
+                      //       ]),
+                      //     ],
+                      //    ),
+                      //     SizedBox(width: 20,),
+                      //     Container(
+                      //       width: MediaQuery.of(context).size.width*0.5,
+                      //       decoration: BoxDecoration(
+                      //         border: Border.all(color: Colors.blueAccent, width: 6),
+                      //         borderRadius: BorderRadius.circular(10),
+                      //         boxShadow: const [
+                      //           BoxShadow(
+                      //             color: Colors.grey,
+                      //           ),
+                      //           BoxShadow(
+                      //             color: Colors.white,
+                      //             spreadRadius: -5.0,
+                      //             blurRadius: 5.0,
+                      //           ),
+                      //         ],
+                      //       ),
+                      //       padding: EdgeInsets.all(10),
+                      //       child: TextField(
+                      //         style: TextStyle(fontWeight: FontWeight.normal, fontSize: 28),
+                      //         keyboardType: TextInputType.number,
+                      //         controller: watch.nominalController,
+                      //         decoration: InputDecoration(
+                      //             border: InputBorder.none,
+                      //             hintText: 'Nominal',
+                      //             hintStyle: TextStyle(fontSize: 28, color: Color(0xFF0060AF))
+                      //         ),
+                      //         onChanged: (text) {
+                      //           read.nominalController?.text = text;
+                      //         },
+                      //       ),
+                      //     ),
+                      //     // widgetFont("Nominal", jumbo2)
+                      //   ],
+                      // ),
+                      widgetFont("Jumlah Uang", title6),
+                      SizedBox(height: 5,),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blueAccent, width: 6),
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.grey,
+                            ),
+                            BoxShadow(
+                              color: Colors.white,
+                              spreadRadius: -5.0,
+                              blurRadius: 5.0,
+                            ),
                           ],
-                         ),
-                          SizedBox(width: 20,),
-                          Container(
-                            width: MediaQuery.of(context).size.width*0.5,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.blueAccent, width: 6),
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                ),
-                                BoxShadow(
-                                  color: Colors.white,
-                                  spreadRadius: -5.0,
-                                  blurRadius: 5.0,
-                                ),
-                              ],
-                            ),
-                            padding: EdgeInsets.all(10),
-                            child: TextField(
-                              style: TextStyle(fontWeight: FontWeight.normal, fontSize: 28),
-                              keyboardType: TextInputType.number,
-                              controller: watch.nominalController,
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Nominal',
-                                  hintStyle: TextStyle(fontSize: 28, color: Color(0xFF0060AF))
-                              ),
-                              onChanged: (text) {
-                                read.nominalController?.text = text;
-                              },
-                            ),
+                        ),
+                        padding: EdgeInsets.all(10),
+                        child: TextField(
+                          style: TextStyle(fontWeight: FontWeight.normal, fontSize: 28),
+                          keyboardType: TextInputType.number,
+                          controller: watch.nominalController,
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Nominal',
+                              hintStyle: TextStyle(fontSize: 28, color: Color(0xFF0060AF))
                           ),
-                          // widgetFont("Nominal", jumbo2)
-                        ],
+                          onChanged: (text) {
+                            read.nominalController?.text = text;
+                          },
+                        ),
                       ),
                       SizedBox(height: 20,),
+                      widgetFont("Berita Transfer", title6),
+                      SizedBox(height: 5,),
                       Container(
                         // width: MediaQuery.of(context).size.width*0.5,
                         decoration: BoxDecoration(

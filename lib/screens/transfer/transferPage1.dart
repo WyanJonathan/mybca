@@ -17,6 +17,9 @@ class transferPage extends StatefulWidget {
 class _transferPageState extends State<transferPage> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     TransferProvider provider = Modular.get<TransferProvider>();
 
     return Scaffold(
@@ -75,7 +78,8 @@ class _transferPageState extends State<transferPage> {
                         color: Color(0xff1e5fad),
                       ),
                       child: TextButton(
-                          onPressed: () => provider.keRekeningBCA(),
+                        onPressed: (){},
+                          // onPressed: () => provider.keRekeningBCA(),
                           child: Text('Transfer ke Bank Lain', style: TextStyle(fontSize: 30, color: Colors.white), textAlign: TextAlign.center,)),
                     ),
                       SizedBox(height: 20,),
@@ -86,7 +90,8 @@ class _transferPageState extends State<transferPage> {
                         color: Color(0xff1e5fad),
                       ),
                       child: TextButton(
-                          onPressed: () => provider.keRekeningBCA(),
+                          onPressed: (){},
+                          // onPressed: () => provider.keRekeningBCA(),
                           child: Text('Transfer Valas ke Bank Lain', style: TextStyle(fontSize: 30, color: Colors.white), textAlign: TextAlign.center,))),
                     SizedBox(height: 20,),
                     Container(
@@ -96,7 +101,8 @@ class _transferPageState extends State<transferPage> {
                         color: Color(0xff1e5fad),
                       ),
                       child: TextButton(
-                          onPressed: () => provider.keRekeningBCA(),
+                          onPressed: (){},
+                          // onPressed: () => provider.keRekeningBCA(),
                           child: Text('Virtual Account', style: TextStyle(fontSize: 30, color: Colors.white), textAlign: TextAlign.center,))),
                     SizedBox(height: 20,),
                     Container(
@@ -106,7 +112,8 @@ class _transferPageState extends State<transferPage> {
                         color: Color(0xff1e5fad),
                       ),
                       child: TextButton(
-                          onPressed: () => provider.keRekeningBCA(),
+                          onPressed: (){},
+                          // onPressed: () => provider.keRekeningBCA(),
                           child: Text('Lainnya', style: TextStyle(fontSize: 30, color: Colors.white), textAlign: TextAlign.center,))),
                   ],
                 ),

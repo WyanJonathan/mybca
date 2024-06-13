@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mybca_prototype/utils/fonts.dart';
 import 'package:mybca_prototype/utils/string_const.dart';
 
@@ -12,6 +13,9 @@ class notificationPage extends StatefulWidget {
 class _notificationPageState extends State<notificationPage> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return Scaffold(
       // appBar: AppBar(
       //   // TRY THIS: Try changing the color here to a specific color (to

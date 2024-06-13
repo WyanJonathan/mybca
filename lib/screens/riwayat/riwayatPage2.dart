@@ -21,6 +21,9 @@ class _riwayatPage2State extends State<riwayatPage2> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     RiwayatProvider provider = Modular.get<RiwayatProvider>();
     final read = context.read<RiwayatProvider>();
     final watch = context.watch<RiwayatProvider>();

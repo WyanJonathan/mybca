@@ -17,17 +17,20 @@ class riwayatPage extends StatefulWidget {
 class _riwayatPageState extends State<riwayatPage> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     RiwayatProvider provider = Modular.get<RiwayatProvider>();
     final read = context.read<RiwayatProvider>();
     final watch = context.watch<RiwayatProvider>();
 
     const String norek = "123-456-789";
 
-    final List<String> entries = <String>['05/25 CELINE DAVINA TRSF E-BANKING CR', 'TRANSFER KE 201 REGINE HA M-BCA BI-FAST DB', '05/12 ADI KRESNA TRSF E-BANKING CR', '05/04 RAHMA SARI TRSF E-BANKING CR',  '05/02 PAK STANLEY A M TRSF E-BANKING CR', '05/25 ZAHID TRSF E-BANKING CR','05/25 CELINE DAVINA TRSF E-BANKING CR'];
-    final List<String> jumlah = <String>['150.000,00', '250.000,00', '390.000,00', '50.000,00','250.000,00', '390.000,00', '50.000,00' ];
-    final List<String> bulan = <String>['Mei','Mei','Mei','Mei','Mei','Mei','Mei'];
-    final List<int> date = <int>[31,28,22,18,09,05,02];
-    final List<int> status = <int>[1,0,1,1,0,1,0];
+    // final List<String> entries = <String>['05/25 CELINE DAVINA TRSF E-BANKING CR', 'TRANSFER KE 201 REGINE HA M-BCA BI-FAST DB', '05/12 ADI KRESNA TRSF E-BANKING CR', '05/04 RAHMA SARI TRSF E-BANKING CR',  '05/02 PAK STANLEY A M TRSF E-BANKING CR', '05/25 ZAHID TRSF E-BANKING CR','05/25 CELINE DAVINA TRSF E-BANKING CR'];
+    // final List<String> jumlah = <String>['150.000,00', '250.000,00', '390.000,00', '50.000,00','250.000,00', '390.000,00', '50.000,00' ];
+    // final List<String> bulan = <String>['Mei','Mei','Mei','Mei','Mei','Mei','Mei'];
+    // final List<int> date = <int>[31,28,22,18,09,05,02];
+    // final List<int> status = <int>[1,0,1,1,0,1,0];
 
     return Scaffold(
       appBar: AppBar(
@@ -115,7 +118,7 @@ class _riwayatPageState extends State<riwayatPage> {
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   padding: const EdgeInsets.all(8),
-                  itemCount: entries.length,
+                  itemCount: read.entries.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
@@ -136,8 +139,8 @@ class _riwayatPageState extends State<riwayatPage> {
                                 child: Center(
                                     child: Column(
                                       children: [
-                                        Text("${date[index]}", style: const TextStyle(color: Color(0xFF6A6A6A), fontSize: 35, fontWeight: FontWeight.bold)),
-                                        Text(bulan[index],  style: const TextStyle(color: Color(0xFF6A6A6A), fontSize: 23, fontWeight: FontWeight.bold)),
+                                        Text("${watch.date[index]}", style: const TextStyle(color: Color(0xFF6A6A6A), fontSize: 35, fontWeight: FontWeight.bold)),
+                                        Text(watch.bulan[index],  style: const TextStyle(color: Color(0xFF6A6A6A), fontSize: 23, fontWeight: FontWeight.bold)),
                                       ],
                                     ))),
                             Container(
@@ -146,12 +149,15 @@ class _riwayatPageState extends State<riwayatPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('${entries[index]}',
+                                  Text('${watch.entries[index]}',
                                       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                                       softWrap: true),
-                                  (status[index] == 1)
-                                      ?Text('${jumlah[index]}', style: TextStyle(color: Color(0xFF0085FF),fontSize: 17),)
-                                      : Text('${jumlah[index]}', style: TextStyle(color: Color(0xFFFF0000),fontSize: 17, ),)
+                                  (watch.status[index] == 1)
+                                      ?Text('${watch.statusUang[index]}', style: TextStyle(color: Color(0xFF0085FF),fontSize: 16),)
+                                      : Text('${watch.statusUang[index]}', style: TextStyle(color: Color(0xFFFF0000),fontSize: 16, ),),
+                                  (watch.status[index] == 1)
+                                      ?Text('${watch.jumlah[index]}', style: TextStyle(color: Color(0xFF0085FF),fontSize: 17),)
+                                      : Text('${watch.jumlah[index]}', style: TextStyle(color: Color(0xFFFF0000),fontSize: 17, ),),
                                 ],
                               ),
                             ),

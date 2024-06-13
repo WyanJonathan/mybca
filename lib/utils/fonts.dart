@@ -117,9 +117,9 @@ Widget widgetFont(String text, String styles) {
     fontSize = 23;
     //end of normal1
   }else if (styles == orange) {
-    color = const Color(0xFFEF6A2A);
-    fontWeight = FontWeight.normal;
-    fontSize = 13;
+    color = const Color(0xFFEFA02A);
+    fontWeight = FontWeight.bold;
+    fontSize = 18;
     //end of normal1
   }else {
     color = Colors.black54;

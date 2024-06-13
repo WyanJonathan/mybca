@@ -33,6 +33,9 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     LoginProvider provider = Modular.get<LoginProvider>();
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
@@ -88,7 +91,7 @@ class _LoginState extends State<Login> {
                           child: widgetFont("User1 test", title1)),
                       Semantics(
                           label: 'Akun ini dibuat dan diperuntukkan prototype testing saja, ini adalah kode akunnya',
-                          child: widgetFont("T****G", title2)),
+                          child: widgetFont("Testing", title2)),
                       const SizedBox(height: 130),
                       Semantics(
                         label: 'Untuk masuk ke akun kamu, kamu bisa menggunakan dua cara yaitu pin dan fingerprint',

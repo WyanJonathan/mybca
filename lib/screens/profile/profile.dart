@@ -20,8 +20,14 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
 
+  String pin_user = "Abcde1";
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     ProfileProvider provider = Modular.get<ProfileProvider>();
     final read = context.read<ProfileProvider>();
     final watch = context.watch<ProfileProvider>();
@@ -89,7 +95,7 @@ class _ProfileState extends State<Profile> {
                             ),
                           ],
                         ),
-                        child: Image(image : AssetImage('assets/black_card_bca.png'),
+                        child: Image(image : AssetImage('assets/black_card_bca_blur.png'),
                           width: 1500,),
                       ),
                       const SizedBox(height: 10),
@@ -124,16 +130,203 @@ class _ProfileState extends State<Profile> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                widgetFont("Card Number", normal1),
-                                widgetFont("${watch.nokartu}", jumbo3),
+                                widgetFont("Nomor Kartu", normal1),
+                                // widgetFont("${watch.nokartu}", jumbo3),
+                                widgetFont("**** **** ****", jumbo3),
                               ],
                             ),
                             IconButton(
-                                onPressed: () => {
-                                  Clipboard.setData(ClipboardData(text: watch.nokartu))
-                                      .then((value) { Asuka.showSnackBar(SnackBar(content: Text("Nomor Rekening Telah Di Salin"))); // -> show a notification
-                                  })
+                                onPressed: () async {
+                                  Asuka.showDialog(
+                                    builder: (context) => AlertDialog(
+                                      title: const Text('Masukkan Kata Sandi Kamu'),
+                                      content: Form(
+                                        key: _formKey,
+                                        child: TextFormField(
+                                            autofocus: true,
+                                            controller: watch.userPasswordController,
+                                            obscureText: !read.passwordVisible,
+                                            decoration: InputDecoration(
+                                              labelText: 'Kata Sandi',
+                                              hintText: 'contoh : AbcdeXX123',
+                                              // Here is key idea
+                                              // suffixIcon: IconButton(
+                                              //   icon: Icon(
+                                              //     read.passwordVisible
+                                              //         ? Icons.visibility
+                                              //         : Icons.visibility_off,
+                                              //     color: sTheme.of(context).primaryColorDark,
+                                              //   ),
+                                              //   onPressed: () {
+                                              //     setState(() {
+                                              //       read.passwordVisible = !read.passwordVisible;
+                                              //     });
+                                              //   },
+                                              // ),
+                                            ),
+                                            // The validator receives the text that the user has entered.
+                                            validator: (value) {
+                                              if (value == null || value.isEmpty) {
+                                                return 'Mohon Diisi';
+                                              } else if (value == pin_user) {
+                                                Navigator.pop(context);
+                                                // asuka.AsukaSnackbar.success("Sukses").show();
+                                                Asuka.showModalBottomSheet(
+                                                  builder: (context) => Material(
+                                                    borderRadius: const BorderRadius.only(
+                                                      topLeft: Radius.circular(16),
+                                                      topRight: Radius.circular(16),
+                                                    ),
+                                                    elevation: 7,
+                                                    child: SizedBox(
+                                                      height: MediaQuery.of(context).size.height*0.5,
+                                                      child: ListView(
+                                                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                                                        children: [
+                                                          ListTile(
+                                                            dense:true,
+                                                            contentPadding: EdgeInsets.only(left: 0.0,
+                                                                right: 0.0),
+                                                            title: Row(
+                                                              children: [
+                                                                SizedBox(width: MediaQuery.of(context).size.width*0.65),
+                                                                Container(
+                                                                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                                                                  decoration: BoxDecoration(
+                                                                        color: Color(0xFF0060AF),
+                                                                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                                        boxShadow: [
+                                                                          BoxShadow(
+                                                                            color: Colors.grey.withOpacity(0.5),
+                                                                            spreadRadius: 2,
+                                                                            blurRadius: 4,
+                                                                            offset: Offset(0, 3), // changes position of shadow
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Icon(Icons.close, color: Colors.white,),
+                                                                      SizedBox(width: 10,),
+                                                                      const Text('Cancel', style: TextStyle(color: Colors.white),),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            onTap: () => Navigator.pop(context),
+                                                          ),
+                                                          // Container(
+                                                          //   width: MediaQuery.of(context).size.width,
+                                                          //   height: 90,
+                                                          //   // height: MediaQuery.of(context).size.height*0.03,
+                                                          //   child: Padding(
+                                                          //     padding: const EdgeInsets.symmetric(vertical: 16),
+                                                          //     child: ElevatedButton(
+                                                          //       style: ElevatedButton.styleFrom(
+                                                          //         backgroundColor: Color(0xFF0060AF),
+                                                          //       ),
+                                                          //       onPressed: () {
+                                                          //         Navigator.pop(context);
+                                                          //       },
+                                                          //       child: const Text("Tutup", style : TextStyle(fontSize: 23, color: Colors.white),)
+                                                          //     ),
+                                                          //   ),
+                                                          // ),
+                                                          Container(
+                                                            decoration: BoxDecoration(
+                                                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                              boxShadow: [
+                                                                BoxShadow(
+                                                                  color: Colors.grey.withOpacity(0.5),
+                                                                  spreadRadius: 0,
+                                                                  blurRadius: 7,
+                                                                  offset: Offset(0, 3), // changes position of shadow
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            child: Image(image : AssetImage('assets/black_card_bca.png'),
+                                                              width: 1500,),
+                                                          ),
+                                                          Container(
+                                                            decoration: BoxDecoration(
+                                                              color: Color(0xFF0060AF),
+                                                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                              boxShadow: [
+                                                                BoxShadow(
+                                                                  color: Colors.grey.withOpacity(0.5),
+                                                                  spreadRadius: 2,
+                                                                  blurRadius: 4,
+                                                                  offset: Offset(0, 3), // changes position of shadow
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            padding: EdgeInsets.fromLTRB(20,10,20,10),
+                                                            child: Row(
+                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                              children: [
+                                                                Column(
+                                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                                  children: [
+                                                                    widgetFont("Nomor Kartu", normal1),
+                                                                    widgetFont("${watch.nokartu}", jumbo3),
+                                                                    // widgetFont("**** **** ****", jumbo3),
+                                                                  ],
+                                                                ),
+                                                                IconButton(
+                                                                    onPressed: () => {
+                                                                      Clipboard.setData(ClipboardData(text: watch.nokartu))
+                                                                          .then((value) { Asuka.showSnackBar(SnackBar(content: Text("Nomor Kartu Telah Di Salin"))); // -> show a notification
+                                                                      })
+                                                                    },
+                                                                    icon: const Icon(Icons.copy, size: 40, color: Color(0xFF99BFDF),)
+                                                                )
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  backgroundColor: Colors.transparent,
+                                                );
+
+                                              } else {
+                                                setState(() {
+                                                  read.userPasswordController?.clear();
+                                                });
+                                                return 'Kata Sandi Salah';
+                                              };
+                                            }
+                                        ),
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text('Cancel'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            if (_formKey.currentState!.validate()) {
+                                              // watch.obscure
+                                              //     ? read.obscure = false
+                                              //     : read.obscure = true;
+                                            }
+                                            // Navigator.pop(context);
+                                          },
+                                          child: const Text('Kirim'),
+                                        ),
+                                      ],
+                                    ),
+                                  );
                                 },
+                                // onPressed: () => {
+                                //   Clipboard.setData(ClipboardData(text: watch.nokartu))
+                                //       .then((value) { Asuka.showSnackBar(SnackBar(content: Text("Nomor Rekening Telah Di Salin"))); // -> show a notification
+                                //   })
+                                // },
                                 icon: const Icon(Icons.copy, size: 40, color: Color(0xFF99BFDF),)
                             )
                           ],

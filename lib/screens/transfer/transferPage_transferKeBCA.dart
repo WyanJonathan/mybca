@@ -18,6 +18,9 @@ class _TransferPage2State extends State<TransferPage2> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     TransferProvider provider = Modular.get<TransferProvider>();
     final read = context.read<TransferProvider>();
     final watch = context.watch<TransferProvider>();

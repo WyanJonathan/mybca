@@ -1,6 +1,7 @@
 import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_pin_code_widget/flutter_pin_code_widget.dart';
 import 'package:mybca_prototype/screens/transfer/transfer_provider.dart';
@@ -33,6 +34,9 @@ class _transferPagePinState extends State<transferPagePin> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return Scaffold(
         resizeToAvoidBottomInset : false,
         appBar: AppBar(

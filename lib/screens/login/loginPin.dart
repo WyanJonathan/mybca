@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:asuka/asuka.dart' as asuka;
+import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mybca_prototype/screens/login/login_provider.dart';
 import 'package:mybca_prototype/utils/fonts.dart';
@@ -40,6 +41,9 @@ class _LoginPinPageState extends State<LoginPinPage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -49,7 +53,7 @@ class _LoginPinPageState extends State<LoginPinPage> {
     return Scaffold(
       resizeToAvoidBottomInset : false,
       appBar: AppBar(
-          iconTheme: IconThemeData(
+          iconTheme: const IconThemeData(
             color: Colors.white, //change your color here
           ),
         // TRY THIS: Try changing the color here to a specific color (to
@@ -195,14 +199,8 @@ class _LoginPinPageState extends State<LoginPinPage> {
                                     backgroundColor: Color(0xFF0060AF),
                                     ),
                                 onPressed: () {
-                                  // Validate returns true if the form is valid, or false otherwise.
                                   if (_formKey.currentState!.validate()) {
-                                    // If the form is valid, display a snackbar. In the real world,
-                                    // you'd often call a server or save the information in a database.
 
-                                    // ScaffoldMessenger.of(context).showSnackBar(
-                                    //   const SnackBar(content: Text('Processing Data')),
-                                    // );
                                   }
                                 },
                                 child: Semantics(

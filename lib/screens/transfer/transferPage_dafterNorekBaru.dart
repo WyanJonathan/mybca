@@ -1,4 +1,5 @@
 import 'package:asuka/asuka.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mybca_prototype/screens/transfer/transfer_provider.dart';
 import 'package:mybca_prototype/utils/fonts.dart';
 import 'package:mybca_prototype/utils/string_const.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TransferPage4 extends StatefulWidget {
   const TransferPage4({super.key});
@@ -15,9 +17,11 @@ class TransferPage4 extends StatefulWidget {
 }
 
 class _TransferPage4State extends State<TransferPage4> {
-
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     TransferProvider provider = Modular.get<TransferProvider>();
     final read = context.read<TransferProvider>();
     final watch = context.watch<TransferProvider>();
@@ -79,7 +83,7 @@ class _TransferPage4State extends State<TransferPage4> {
                           controller: watch.nominalController,
                           decoration: const InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'Nominal',
+                              hintText: 'Nomor Rekening',
                               hintStyle: TextStyle(fontSize: 28, color: Color(0xFF0060AF))
                           ),
                           onChanged: (text) {},
@@ -99,6 +103,11 @@ class _TransferPage4State extends State<TransferPage4> {
               ),
               child: TextButton(
                   onPressed: () {
+                    // CollectionReference collRef = FirebaseFirestore.instance.collection('users');
+                    // collRef.add({
+                    //   'name' : 'Test User Akun Baru',
+                    //   'nomor_rekening' : watch.nominalController?.text
+                    // });
                     Navigator.pop(context);
                   },
                   child: widgetFont('Lanjut', jumbo1)),

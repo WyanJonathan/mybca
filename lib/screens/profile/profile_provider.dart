@@ -5,13 +5,35 @@ import 'package:flutter_modular/flutter_modular.dart';
 class ProfileProvider with ChangeNotifier {
 
   late String _nokartu = "4691 5112 3456 7890";
+  late bool _obscure = true;
 
+  final TextEditingController _userPasswordController = TextEditingController();
+  late bool _passwordVisible = false;
 
   String get nokartu => _nokartu;
+  bool get obscure => _obscure;
 
+  TextEditingController? get userPasswordController => _userPasswordController;
+  bool get passwordVisible => _passwordVisible;
+
+  set obscure(bool val) {
+    _obscure = val;
+    notifyListeners();
+  }
 
   set nokartu(String value) {
     _nokartu = value;
+    notifyListeners();
+  }
+
+  set passBehaviour(String val) {
+    userPasswordController?.text = val;
+    userPasswordController?.selection =
+        TextSelection.collapsed(offset: userPasswordController!.text.length);
+  }
+
+  set passwordVisible(bool val) {
+    _passwordVisible = val;
     notifyListeners();
   }
 

@@ -4,7 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 class TransferProvider with ChangeNotifier {
 
-  late List<String> _jumlah = ['150.000,00', '250.000,00', '390.000,00', '50.000,00','250.000,00', '390.000,00', '50.000,00' ];
+  late List<String> _jumlah = ['120.000,00','150.000,00', '250.000,00', '390.000,00', '50.000,00','250.000,00', '390.000,00', '50.000,00' ];
   final TextEditingController _nominalController = TextEditingController();
   final TextEditingController _mataUang = TextEditingController();
   final TextEditingController _notesController = TextEditingController();
@@ -13,6 +13,7 @@ class TransferProvider with ChangeNotifier {
   late bool _passwordVisible = false;
 
   late List<String> _listItems = [
+    "Akun Testing User Baru",
     'Celine Davina Masko',
     'Dofan Claudio Sihotang',
     'I Dewa Made Adi Kresna',
@@ -20,7 +21,7 @@ class TransferProvider with ChangeNotifier {
     'Regine Angelina Halim',
     'Pak Stanley A. Makalew',
   ];
-  late List<String> _nomor_rekening = <String>['11111', '2435423', '456789', '3087534', '567890', '987654'];
+  late List<String> _nomor_rekening = <String>['000000','11111', '2435423', '456789', '3087534', '567890', '987654'];
   late List<String> _filteredListItems = _listItems;
 
   TextEditingController? get nominalController => _nominalController;
