@@ -8,6 +8,7 @@ import 'package:mybca_prototype/screens/navigationPage.dart';
 import 'package:mybca_prototype/screens/notificationPage.dart';
 import 'package:mybca_prototype/screens/profile/profile.dart';
 import 'package:mybca_prototype/screens/profile/profile_provider.dart';
+import 'package:mybca_prototype/screens/qris/qrisPage_pin.dart';
 import 'package:mybca_prototype/screens/riwayat/riwayatPage.dart';
 import 'package:mybca_prototype/screens/riwayat/riwayatPage2.dart';
 import 'package:mybca_prototype/screens/riwayat/riwayatPage3.dart';
@@ -24,6 +25,9 @@ import 'package:mybca_prototype/screens/qris/pembayaran_qris_page.dart';
 import 'package:mybca_prototype/screens/qris/qris.dart';
 import 'package:mybca_prototype/screens/qris/qris_bayar.dart';
 import 'package:mybca_prototype/screens/qris/qris_provider.dart';
+import 'package:mybca_prototype/screens/qris/qris_bukti_transaksi.dart';
+
+
 
 
 class AppModule extends Module {
@@ -65,5 +69,8 @@ class AppModule extends Module {
     r.child('/QrisBayarPage',
         child: (context) => const QrisBayarPage(),
         transition: TransitionType.rightToLeftWithFade);
+    r.child('/qrisPinPage', child: (context) => const qrisPagePin(title: '',), transition: TransitionType.rightToLeftWithFade);
+    r.child('/qrisBuktiTransfer', child: (context) => const qrisBuktiTransfer(), transition: TransitionType.rightToLeftWithFade);
+
   }
 }
