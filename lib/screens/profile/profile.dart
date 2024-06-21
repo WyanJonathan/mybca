@@ -99,15 +99,18 @@ class _ProfileState extends State<Profile> {
                           width: 1500,),
                       ),
                       const SizedBox(height: 10),
-                      Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blueAccent, width: 6),
-                          borderRadius: BorderRadius.circular(10),
+                      Semantics(
+                        enabled: false,
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.blueAccent, width: 6),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: TextButton(
+                              onPressed: () {},
+                              child: widgetFont('Lihat Detail Kartu', jumbo2)),
                         ),
-                        child: TextButton(
-                            onPressed: () {},
-                            child: widgetFont('Lihat Detail Kartu', jumbo2)),
                       ),
                       const SizedBox(height: 20),
                       Container(

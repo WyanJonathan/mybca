@@ -16,7 +16,7 @@ class _PembayaranQrisPageState extends State<PembayaranQrisPage> {
   Widget build(BuildContext context) {
     QrisProvider provider = Modular.get<QrisProvider>();
     final watch = context.watch<QrisProvider>();
-
+    final read = context.read<QrisProvider>();
 
     return Scaffold(
       appBar: AppBar(
@@ -108,6 +108,9 @@ class _PembayaranQrisPageState extends State<PembayaranQrisPage> {
                             hintText: 'Nominal',
                             hintStyle: TextStyle(fontSize: 28, color: Color(0xFF0060AF)),
                           ),
+                          onChanged: (text) {
+                            read.nominalController?.text = text;
+                          },
                         ),
                       ),
                     ],
@@ -115,7 +118,10 @@ class _PembayaranQrisPageState extends State<PembayaranQrisPage> {
                   Spacer(),
                   Center(
                     child: ElevatedButton(
-                      onPressed: () => provider.pinPage(watch.nominalController?.text,'RM KARI BUNDO'),
+                      onPressed: () {
+                        provider.pinPage('RM KARI BUNDO',watch.nominalController?.text);
+                        read.nominalController?.clear();
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF0060AF),
                         foregroundColor: Colors.white,

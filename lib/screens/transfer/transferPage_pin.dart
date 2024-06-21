@@ -1,4 +1,5 @@
 import 'package:asuka/asuka.dart';
+import 'package:asuka/snackbars/asuka_snack_bar.dart' as asuka;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -85,8 +86,9 @@ class _transferPagePinState extends State<transferPagePin> {
                                 },
                                 onEnter: (pin, _) {
                                   if (pin == pin_user){
-                                    // asuka.AsukaSnackbar.success("Success").show();
+                                    asuka.AsukaSnackbar.success("Transaksi Berhasil").show();
                                     provider.printBuktiTransfer(detail['name'],detail['jumlah']);
+                                    // Asuka.showSnackBar(const SnackBar(content: Text("Transaksi Berhasil")));
 
                                   }else{
                                     Asuka.showDialog(

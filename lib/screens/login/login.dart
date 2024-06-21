@@ -164,9 +164,8 @@ class _LoginState extends State<Login> {
                                     _isAuthenticated = false;
                                   });
                                 }
-
                               },
-                              child: const Image(image: AssetImage('assets/fingerprint.png'))
+                              child: Semantics(label:"ini tombol fingerprint",enabled: true, child: Image(image: AssetImage('assets/fingerprint.png')))
                           ),
                         ),
                       ),

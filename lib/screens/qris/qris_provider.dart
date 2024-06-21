@@ -31,12 +31,12 @@ class QrisProvider with ChangeNotifier {
 
   void pinPage(String? name, String? jumlah) {
     Map<String, dynamic> detail = {'name': name , 'jumlah': jumlah};
-    Modular.to.pushNamed('/transferPagePin', arguments: detail );
+    Modular.to.pushNamed('/qrisPinPage', arguments: detail );
   }
 
   void printBuktiTransfer(String? name, String? jumlah) {
     Map<String, dynamic> detail = {'name': name , 'jumlah': jumlah};
-    Modular.to.navigate('/buktiTransfer', arguments: detail );
+    Modular.to.navigate('/qrisBuktiTransfer', arguments: detail );
   }
 
   @override

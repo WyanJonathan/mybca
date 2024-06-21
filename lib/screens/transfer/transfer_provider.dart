@@ -86,6 +86,10 @@ class TransferProvider with ChangeNotifier {
     Modular.to.pushNamed('/transferPage2');
   }
 
+  void backHome() {
+    Modular.to.navigate('/navigationPage');
+  }
+
   void transferKe(String? name, String? norek) {
     Map<String, dynamic> detail = {'name': name , 'norek': norek};
     Modular.to.pushNamed('/transferPage3', arguments: detail );
