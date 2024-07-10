@@ -241,7 +241,7 @@ class _TransferPage3State extends State<TransferPage3> {
                             child: widgetFont("Jenis Transfer", title6)),
                         Ink(
                           // width: 150,
-                          height: MediaQuery.of(context).size.height*0.26,
+                          height: MediaQuery.of(context).size.height*0.27,
                           color: Colors.white,
                           child: GridView.count(
                             physics: NeverScrollableScrollPhysics(),
@@ -286,7 +286,7 @@ class _TransferPage3State extends State<TransferPage3> {
                             ),
                           ),
                         ),
-                        SizedBox(height: MediaQuery.of(context).size.height*0.0005,),
+                        SizedBox(height: MediaQuery.of(context).size.height*0.02,),
                         Container(
                           width: double.infinity,
                           decoration: const BoxDecoration(

@@ -59,7 +59,7 @@ class AppModule extends Module {
     r.child('/transferPage3', child: (context) => const TransferPage3(), transition: TransitionType.rightToLeftWithFade);
     r.child('/transferPage4', child: (context) => const TransferPage4(), transition: TransitionType.rightToLeftWithFade);
     r.child('/transferPagePin', child: (context) => const transferPagePin(title: '',), transition: TransitionType.rightToLeftWithFade);
-    r.child('/buktiTransfer', child: (context) => const buktiTransfer(), transition: TransitionType.rightToLeftWithFade);
+    r.child('/buktiTransfer', child: (context) => BuktiTransfer(), transition: TransitionType.rightToLeftWithFade);
     r.child('/QRScannerPage',
         child: (context) => const QRScannerPage(),
         transition: TransitionType.rightToLeftWithFade);
@@ -70,7 +70,7 @@ class AppModule extends Module {
         child: (context) => const QrisBayarPage(),
         transition: TransitionType.rightToLeftWithFade);
     r.child('/qrisPinPage', child: (context) => const qrisPagePin(title: '',), transition: TransitionType.rightToLeftWithFade);
-    r.child('/qrisBuktiTransfer', child: (context) => const qrisBuktiTransfer(), transition: TransitionType.rightToLeftWithFade);
+    r.child('/qrisBuktiTransfer', child: (context) => qrisBuktiTransfer(), transition: TransitionType.rightToLeftWithFade);
 
   }
 }

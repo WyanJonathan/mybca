@@ -1,6 +1,9 @@
 import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mybca_prototype/screens/transfer/bukti_transaksi.dart';
+import 'package:screenshot/screenshot.dart';
+import 'package:share_plus/share_plus.dart';
 
 class TransferProvider with ChangeNotifier {
 
@@ -9,6 +12,8 @@ class TransferProvider with ChangeNotifier {
   final TextEditingController _mataUang = TextEditingController();
   final TextEditingController _notesController = TextEditingController();
   final TextEditingController _daftarNorekController = TextEditingController();
+  late ScreenshotController _screenshotController = ScreenshotController();
+
 
   late bool _passwordVisible = false;
 
@@ -28,6 +33,7 @@ class TransferProvider with ChangeNotifier {
   TextEditingController? get mataUang => _mataUang;
   TextEditingController? get notesController => _notesController;
   TextEditingController? get daftarNorekController => _daftarNorekController;
+  ScreenshotController get screenshotController => _screenshotController;
 
   List<String> get jumlah => _jumlah;
   List<String> get listItems => _listItems;
@@ -39,6 +45,10 @@ class TransferProvider with ChangeNotifier {
     nominalController?.text = val;
     nominalController?.selection =
         TextSelection.collapsed(offset: nominalController!.text.length);
+  }
+
+  set screenshotController(ScreenshotController val) {
+    _screenshotController = val;
   }
 
   set matauangBehaviour(String val) {
@@ -116,6 +126,16 @@ class TransferProvider with ChangeNotifier {
   void home() {
     Modular.to.navigate('/navigationPage');
   }
+
+  void screenshot() async {
+    final image = await screenshotController?.captureFromWidget(
+      BuktiTransfer(),
+      pixelRatio: 2,
+    );
+    Share.shareXFiles([XFile.fromData(image!, mimeType: "image/png")]);
+  }
+
+
 
   // void tampilkan() {
   //   Asuka.showDialog(

@@ -89,6 +89,7 @@ class navigationPage extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);
     return const MaterialApp(
+      color: Colors.white,
       debugShowCheckedModeBanner: false,
       home: BottomNavigationBarExample(),
     );
