@@ -144,24 +144,24 @@ class _riwayatPage2State extends State<riwayatPage2> {
                               ],
                             )),
                       ),
-                      SizedBox(height: 15,),
-                      Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          border: Border.all(color: Colors.black45, width: 2),
-                          color: Colors.white,
-                        ),
-                        child: TextButton(
-                            onPressed: () => provider.riwayatPage3(),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('PILIH PERIODE LAIN', style: TextStyle(fontSize: 25, color: Color(0xFF093967))),
-                                Icon(Icons.more_horiz, size: 40,)
-                              ],
-                            )),
-                      ),
+                      // SizedBox(height: 15,),
+                      // Container(
+                      //   width: double.infinity,
+                      //   decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.all(Radius.circular(10)),
+                      //     border: Border.all(color: Colors.black45, width: 2),
+                      //     color: Colors.white,
+                      //   ),
+                      //   child: TextButton(
+                      //       onPressed: () => provider.riwayatPage3(),
+                      //       child: Row(
+                      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //         children: [
+                      //           Text('PILIH PERIODE LAIN', style: TextStyle(fontSize: 25, color: Color(0xFF093967))),
+                      //           Icon(Icons.more_horiz, size: 40,)
+                      //         ],
+                      //       )),
+                      // ),
                     ],
                   ),
                 ),
