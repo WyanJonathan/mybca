@@ -11,6 +11,8 @@ import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 import 'dart:typed_data';
 
+// this file id dedicated to show the transaction proof
+
 class BuktiTransfer extends StatefulWidget {
   @override
   _BuktiTransferState createState() => _BuktiTransferState();
@@ -18,9 +20,9 @@ class BuktiTransfer extends StatefulWidget {
 
 class _BuktiTransferState extends State<BuktiTransfer> {
   ScreenshotController screenshotController = ScreenshotController();
-  Map<String, dynamic> detail = Modular.args.data;
+  Map<String, dynamic> detail = Modular.args.data; // this is the function to call the data that has been sent from void printBuktiTransfer(String? name, String? jumlah) {...} in transfer_provider.dart
   String date = DateFormat("dd MMMM yyyy HH:MM:s").format(DateTime.now());
-  TransferProvider provider2 = Modular.get<TransferProvider>();
+  TransferProvider provider2 = Modular.get<TransferProvider>(); // this function is to make sure the file can access the provider using the alias provider2
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +47,14 @@ class _BuktiTransferState extends State<BuktiTransfer> {
                           children: [
                             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                             IconButton(
-                              icon: Semantics(
+                              icon: Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                                 label: "Kembali ke Beranda",
                                 child: const Icon(Icons.arrow_back_ios, size: 40),
                               ),
                               onPressed: () => provider2.backHome(),
                             ),
                             Center(
-                              child: Semantics(
+                              child: Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                                 label: "Logo BCA",
                                 enabled: false,
                                 child: const SizedBox(

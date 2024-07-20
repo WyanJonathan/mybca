@@ -6,7 +6,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mybca_prototype/screens/transfer/transfer_provider.dart';
 import 'package:mybca_prototype/utils/fonts.dart';
 import 'package:mybca_prototype/utils/string_const.dart';
-
+// this page gives the user the option to pick, do they want to transfer to another account in BCA? or do they want to transfer to another bank account ?
 class transferPage extends StatefulWidget {
   const transferPage({super.key});
 
@@ -24,15 +24,10 @@ class _transferPageState extends State<transferPage> {
 
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
           iconTheme: IconThemeData(
             color: Colors.white, //change your color here
           ),
           backgroundColor: Color(0xFF0060AF),
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
           title: widgetFont("Transfer", title4)
       ),
       body: Container(

@@ -10,18 +10,10 @@ import 'package:mybca_prototype/screens/home/home_provider.dart';
 import 'package:mybca_prototype/utils/fonts.dart';
 import 'package:mybca_prototype/utils/string_const.dart';
 
+//this file will show the buttons in the home page, but it will be run in the navigationPage.dart page
+
 class Home extends StatefulWidget {
   const Home({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -71,60 +63,13 @@ class _HomeState extends State<Home> {
                         child: Row(
                           children: [
                             widgetFont(" HALO", title1),
-                            Semantics(
+                            Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                                 label: "ini adalah username kamu",
                                 child: widgetFont(" USER1", blue)),
                           ],
                         ),
                       ),
                       SizedBox(height: MediaQuery.of(context).size.height*0.02),
-                      // Stack(
-                      //   children: [
-                      //     Semantics(
-                      //       enabled: false,
-                      //       child: const Image(image : AssetImage('assets/bg_kartu_home.png'),
-                      //         width: double.infinity,),
-                      //     ),
-                      //     Container(
-                      //       padding: EdgeInsets.fromLTRB(20, 10, 20, 30),
-                      //       child: Column(
-                      //         crossAxisAlignment: CrossAxisAlignment.start,
-                      //         children: [
-                      //           widgetFont("Total Saldo", jumbo1),
-                      //           Semantics(
-                      //               // label: "Ini adalah nomor rekening kamu",
-                      //               enabled: false,
-                      //               child: widgetFont("Rekening 0943-432-124", orange)),
-                      //           SizedBox(height: 60,),
-                      //           Row(
-                      //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //             children: [
-                      //               watch.obscure
-                      //                   ? Semantics(
-                      //                     enabled: false,
-                      //                     label: "Ini adalah total saldo kamu, tetapi masih dalam mode disembunyikan, jika kamu ingin melihatnya, tekan tombol tunjukkan saldo yang ada di sebelah kanan-nya",
-                      //                     child: Text("IDR *******", style: TextStyle(fontSize: 40, color: Colors.white)))
-                      //                   : Semantics(
-                      //                     label: "Ini adalah total saldo kamu, dalam mode tidak disembunyikan",
-                      //                     child: const Text("IDR 354.000", style: TextStyle(fontSize: 40, color: Colors.white))),
-                      //               Semantics(
-                      //                 label: "Ini adalah tombol untuk menunjukkan saldo kamu",
-                      //                 child: IconButton(
-                      //                   icon: watch.obscure
-                      //                       ? const Icon(Icons.remove_red_eye, color: Colors.white,)
-                      //                       : const Icon(Icons.remove_red_eye_outlined, color: Colors.white,),
-                      //                   onPressed: () => watch.obscure
-                      //                       ? read.obscure = false
-                      //                       : read.obscure = true,
-                      //                 ),
-                      //               ),
-                      //             ],
-                      //           )
-                      //         ],
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
                       Container(
                         // margin: EdgeInsets.symmetric(horizontal: 11),
                         decoration: BoxDecoration(
@@ -148,10 +93,10 @@ class _HomeState extends State<Home> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Semantics(
+                                  Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                                       label: "Ini adalah nomor rekening kamu, jika kamu ingin menyalinnya bisa menggunakakn tombol salin di sebelah kanan",
                                       child: widgetFont("Rekening 0943-432-124", orange)),
-                                  Semantics(
+                                  Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                                     enabled: true,
                                     label : "Ini adalah tombol untuk menyalin nomor rekening kamu",
                                     child: IconButton(
@@ -177,14 +122,14 @@ class _HomeState extends State<Home> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 watch.obscure
-                                    ? Semantics(
+                                    ? Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                                     enabled: false,
                                     label: "Ini adalah total saldo kamu, tetapi masih dalam mode disembunyikan, jika kamu ingin melihatnya, tekan tombol tunjukkan saldo yang ada di sebelah kanan-nya",
                                     child: Text("IDR *******", style: TextStyle(fontSize: 40, color: Colors.white)))
-                                    : Semantics(
+                                    : Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                                     label: "Ini adalah total saldo kamu, dalam mode tidak disembunyikan",
                                     child: const Text("IDR 354.000", style: TextStyle(fontSize: 40, color: Colors.white))),
-                                Semantics(
+                                Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                                   label: watch.obscure
                                       ? "Ini adalah tombol untuk menunjukkan saldo kamu"
                                       : "Ini adalah tombol untuk menutupi saldo kamu",
@@ -193,7 +138,7 @@ class _HomeState extends State<Home> {
                                         ? const Icon(Icons.remove_red_eye, color: Colors.white,)
                                         : const Icon(Icons.remove_red_eye_outlined, color: Colors.white,),
                                     onPressed: () => {watch.obscure
-                                        ? {read.obscure = false, SemanticsService.announce("Saldo Kamu IDR 354.000", TextDirection.ltr)}
+                                        ? {read.obscure = false, SemanticsService.announce("Saldo Kamu IDR 354.000", TextDirection.ltr)} //this line is to make it so when the user reveal the nominal of the account balance, the talkback will voice out the label written
                                         : read.obscure = true,}
                                   ),
                                 ),

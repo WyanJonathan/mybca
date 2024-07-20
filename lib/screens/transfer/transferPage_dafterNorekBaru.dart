@@ -22,9 +22,9 @@ class _TransferPage4State extends State<TransferPage4> {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    TransferProvider provider = Modular.get<TransferProvider>();
-    final read = context.read<TransferProvider>();
-    final watch = context.watch<TransferProvider>();
+    // TransferProvider provider = Modular.get<TransferProvider>();
+    // final read = context.read<TransferProvider>();
+    final watch = context.watch<TransferProvider>(); // this line is to connect the file to the provider file
 
     return Scaffold(
       appBar: AppBar(

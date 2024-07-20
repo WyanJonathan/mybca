@@ -27,9 +27,7 @@ import 'package:mybca_prototype/screens/qris/qris_bayar.dart';
 import 'package:mybca_prototype/screens/qris/qris_provider.dart';
 import 'package:mybca_prototype/screens/qris/qris_bukti_transaksi.dart';
 
-
-
-
+//this file is dedicated for routing between pages, and adding a provider so each page can access a certain provider
 class AppModule extends Module {
 
   @override

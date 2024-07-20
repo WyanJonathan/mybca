@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mybca_prototype/utils/string_const.dart';
-
+//this file is for cutomizing fonts
 Widget widgetFont(String text, String styles) {
   late FontWeight fontWeight;
   late double fontSize;

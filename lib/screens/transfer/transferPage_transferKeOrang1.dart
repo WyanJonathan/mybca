@@ -7,6 +7,9 @@ import 'package:mybca_prototype/screens/transfer/transfer_provider.dart';
 import 'package:mybca_prototype/utils/fonts.dart';
 import 'package:mybca_prototype/utils/string_const.dart';
 
+//this file is dedicated for the users to input the details of to whom are they going to transfer too
+
+
 class TransferPage3 extends StatefulWidget {
   const TransferPage3({super.key});
 
@@ -17,7 +20,6 @@ class TransferPage3 extends StatefulWidget {
 class _TransferPage3State extends State<TransferPage3> {
 
   Map<String, dynamic>  detail = Modular.args.data;
-  // final List<bool> isSelected = <bool>[true, false, false];
 
   List<bool> isSelected = [true, false, false];
   List<String> text = ["SEKARANG", "ATUR TANGGAL", "BERKALA"];
@@ -27,9 +29,9 @@ class _TransferPage3State extends State<TransferPage3> {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    TransferProvider provider = Modular.get<TransferProvider>();
-    final watch = context.watch<TransferProvider>();
-    final read = context.read<TransferProvider>();
+    TransferProvider provider = Modular.get<TransferProvider>(); //this line helps the file to connect to the provider, especially if you want to do routing
+    final watch = context.watch<TransferProvider>(); // this line helps so that when the developer wants to show something to the user, they can take data from the provider using the alias "watch..{...}"
+    final read = context.read<TransferProvider>();// this line helps so that when they want user to input something and save the input, they need to use the alias "read.{...}"
 
     return Scaffold(
       appBar: AppBar(
@@ -66,60 +68,10 @@ class _TransferPage3State extends State<TransferPage3> {
                       children: <Widget>[
                         widgetFont("Pembayaran Ke", normal3),
                         widgetFont("${detail['name']}", jumbo2),
-                        Semantics(
+                        Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                             label: "Ini adalah nomor rekening ${detail['name']}",
                             child: widgetFont("${detail['norek']}", title2)),
                         SizedBox(height: 20,),
-                        // Row(
-                        //   children: [
-                        //   Column(
-                        //     crossAxisAlignment: CrossAxisAlignment.start,
-                        //     children: [
-                        //       widgetFont("Mata Uang", normal3),
-                        //       DropdownMenu(
-                        //         label: widgetFont('IDR', normal2),
-                        //           controller: watch.mataUang,
-                        //         enableSearch: false,
-                        //           dropdownMenuEntries: const <DropdownMenuEntry<Color>> [
-                        //         DropdownMenuEntry(value: Colors.red, label: "IDR"),
-                        //       ]),
-                        //     ],
-                        //    ),
-                        //     SizedBox(width: 20,),
-                        //     Container(
-                        //       width: MediaQuery.of(context).size.width*0.5,
-                        //       decoration: BoxDecoration(
-                        //         border: Border.all(color: Colors.blueAccent, width: 6),
-                        //         borderRadius: BorderRadius.circular(10),
-                        //         boxShadow: const [
-                        //           BoxShadow(
-                        //             color: Colors.grey,
-                        //           ),
-                        //           BoxShadow(
-                        //             color: Colors.white,
-                        //             spreadRadius: -5.0,
-                        //             blurRadius: 5.0,
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       padding: EdgeInsets.all(10),
-                        //       child: TextField(
-                        //         style: TextStyle(fontWeight: FontWeight.normal, fontSize: 28),
-                        //         keyboardType: TextInputType.number,
-                        //         controller: watch.nominalController,
-                        //         decoration: InputDecoration(
-                        //             border: InputBorder.none,
-                        //             hintText: 'Nominal',
-                        //             hintStyle: TextStyle(fontSize: 28, color: Color(0xFF0060AF))
-                        //         ),
-                        //         onChanged: (text) {
-                        //           read.nominalController?.text = text;
-                        //         },
-                        //       ),
-                        //     ),
-                        //     // widgetFont("Nominal", jumbo2)
-                        //   ],
-                        // ),
                         widgetFont("Jumlah Uang", title6),
                         SizedBox(height: 5,),
                         Container(
@@ -187,56 +139,7 @@ class _TransferPage3State extends State<TransferPage3> {
                           ),
                         ),
                         SizedBox(height: 20,),
-                        // GridView.count(
-                        //   primary: true,
-                        //   crossAxisCount: 3, //set the number of buttons in a row
-                        //   crossAxisSpacing: 8, //set the spacing between the buttons
-                        //   childAspectRatio: 1,
-                        //   children : [
-                        //     ToggleButtons(
-                        //     isSelected: isSelected,
-                        //     onPressed: (int index) {
-                        //       setState(() {
-                        //         for (int buttonIndex = 0; buttonIndex < isSelected.length; buttonIndex++) {
-                        //           if (buttonIndex == index) {
-                        //             isSelected[buttonIndex] = true;
-                        //           } else {
-                        //             isSelected[buttonIndex] = false;
-                        //           }
-                        //         }
-                        //       });
-                        //     },
-                        //     children: <Widget>[
-                        //       Container(
-                        //         decoration: BoxDecoration(
-                        //           border: Border.all(color: Colors.blueAccent, width: 6),
-                        //           borderRadius: BorderRadius.circular(10),
-                        //         ),
-                        //         padding: EdgeInsets.all(10),
-                        //         child: widgetFont("SEKARANG", jumbo2)
-                        //       ),
-                        //       Container(
-                        //           decoration: BoxDecoration(
-                        //             border: Border.all(color: Colors.blueAccent, width: 6),
-                        //             borderRadius: BorderRadius.circular(10),
-                        //           ),
-                        //           padding: EdgeInsets.all(10),
-                        //           child: widgetFont("SEKARANG", jumbo2)
-                        //       ),
-                        //       Container(
-                        //           decoration: BoxDecoration(
-                        //             border: Border.all(color: Colors.blueAccent, width: 6),
-                        //             borderRadius: BorderRadius.circular(10),
-                        //           ),
-                        //           padding: EdgeInsets.all(10),
-                        //           child: widgetFont("SEKARANG", jumbo2)
-                        //       ),
-                        //
-                        //     ],
-                        //   ),
-                        //   ]
-                        // ),
-                        Semantics(
+                        Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                             label: "Untuk melakukan transfer bisa dipilih dari 3 mode yaitu sekarang, atur tanggal dan transfer secara berkala",
                             child: widgetFont("Jenis Transfer", title6)),
                         Ink(

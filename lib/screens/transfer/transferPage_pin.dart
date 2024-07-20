@@ -9,6 +9,7 @@ import 'package:mybca_prototype/screens/transfer/transfer_provider.dart';
 import 'package:mybca_prototype/utils/fonts.dart';
 import 'package:mybca_prototype/utils/string_const.dart';
 
+//this page is dedicated for showing the pin for the transaction
 
 class transferPagePin extends StatefulWidget {
   const transferPagePin({super.key, required this.title});
@@ -45,7 +46,7 @@ class _transferPagePinState extends State<transferPagePin> {
               color: Colors.white, //change your color here
             ),
             backgroundColor: Color(0xFF0060AF),
-            title: Semantics(
+            title: Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                 label: "Ini adalah halaman untuk kamu memasukkan Pin",
                 enabled: false,
                 child: widgetFont("Pin", title4))

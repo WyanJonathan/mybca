@@ -5,6 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mybca_prototype/app_module.dart';
 import 'package:mybca_prototype/app_widget.dart';
 
+//the page starts running from this page
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();

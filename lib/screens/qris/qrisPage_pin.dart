@@ -45,7 +45,7 @@ class _qrisPagePinState extends State<qrisPagePin> {
               color: Colors.white, //change your color here
             ),
             backgroundColor: Color(0xFF0060AF),
-            title: Semantics(
+            title: Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                 label: "Ini adalah halaman untuk kamu memasukkan Pin",
                 enabled: false,
                 child: widgetFont("Pin", title4))

@@ -62,7 +62,7 @@ class _LoginPinPageState extends State<LoginPinPage> {
           backgroundColor: Color(0xFF0060AF),
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Semantics(
+        title: Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
             label: "Ini adalah halaman untuk kamu memasukkan Pin",
             enabled: false,
             child: widgetFont("Pin", title4))
@@ -157,7 +157,7 @@ class _LoginPinPageState extends State<LoginPinPage> {
                                 labelText: 'Password',
                                 hintText: 'Enter your password',
                                 // Here is key idea
-                                suffixIcon: Semantics(
+                                suffixIcon: Semantics(// this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                                   label: "Ini adalah tombol untuk menunjukkan kata kunci kamu",
                                   child: IconButton(
                                     icon: Icon(
@@ -206,7 +206,7 @@ class _LoginPinPageState extends State<LoginPinPage> {
 
                                   }
                                 },
-                                child: Semantics(
+                                child: Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                                     label: "Kirim pin yang sudah kamu masukkan",
                                     child: Text("Kirim", style : TextStyle(fontSize: 23, color: Colors.white),)),
                               ),

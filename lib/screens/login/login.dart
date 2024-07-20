@@ -51,7 +51,7 @@ class _LoginState extends State<Login> {
         backgroundColor: Color(0xFF0060AF),
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Semantics(
+        title: Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
           label: "Logo BCA",
           enabled: false,
           child: const SizedBox(
@@ -85,15 +85,15 @@ class _LoginState extends State<Login> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 10),
-                      Semantics(
+                      Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                           label: "Ini nama akun kamu",
                           readOnly: true,
                           child: widgetFont("User1 test", title1)),
-                      Semantics(
+                      Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                           label: 'Akun ini dibuat dan diperuntukkan prototype testing saja, ini adalah kode akunnya',
                           child: widgetFont("Testing", title2)),
                       const SizedBox(height: 130),
-                      Semantics(
+                      Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                         label: 'Untuk masuk ke akun kamu, kamu bisa menggunakan dua cara yaitu pin dan fingerprint',
                         child: SizedBox(
                           width: MediaQuery.of(context).size.width,
@@ -140,7 +140,7 @@ class _LoginState extends State<Login> {
                           color: Colors.white,
                         ),
                         width: MediaQuery.of(context).size.width,
-                        child: Semantics(
+                        child: Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                           label: "jika kamu mau masuk dengan fingerprint pilih ini",
                           child: TextButton(
                               onPressed: () async {
@@ -165,7 +165,7 @@ class _LoginState extends State<Login> {
                                   });
                                 }
                               },
-                              child: Semantics(label:"ini tombol fingerprint",enabled: true, child: Image(image: AssetImage('assets/fingerprint.png')))
+                              child: Semantics(label:"ini tombol fingerprint",enabled: true, child: Image(image: AssetImage('assets/fingerprint.png'))) // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                           ),
                         ),
                       ),

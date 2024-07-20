@@ -30,17 +30,6 @@ class AppWidget extends StatelessWidget{
       ),
       routerConfig: Modular.routerConfig,
       builder: Asuka.builder,
-      /*builder: (context, widget) => MultiBlocProvider(
-        providers: [
-          BlocProvider<HomeProvider>(
-            create: (BuildContext context) => HomeProvider(),
-          ),
-          BlocProvider<TestBloc>(
-            create: (BuildContext context) => TestBloc(),
-          ),
-        ],
-        child: const Test(),
-      ),*/
     ); //added by extension
   }
 }

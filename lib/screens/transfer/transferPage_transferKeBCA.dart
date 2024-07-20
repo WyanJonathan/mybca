@@ -7,6 +7,9 @@ import 'package:mybca_prototype/screens/transfer/transfer_provider.dart';
 import 'package:mybca_prototype/utils/fonts.dart';
 import 'package:mybca_prototype/utils/string_const.dart';
 
+
+// this file is dedicated for the user to transfer their money to another person's BCA account
+
 class TransferPage2 extends StatefulWidget {
   const TransferPage2({super.key});
 
@@ -21,9 +24,9 @@ class _TransferPage2State extends State<TransferPage2> {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    TransferProvider provider = Modular.get<TransferProvider>();
-    final read = context.read<TransferProvider>();
-    final watch = context.watch<TransferProvider>();
+    TransferProvider provider = Modular.get<TransferProvider>(); //this line helps the file to connect to the provider, especially if you want to do routing
+    final read = context.read<TransferProvider>(); // this line helps so that when they want user to input something and save the input, they need to use the alias "read.{...}"
+    final watch = context.watch<TransferProvider>(); // this line helps so that when the developer wants to show something to the user, they can take data from the provider using the alias "watch..{...}"
 
     return Scaffold(
       appBar: AppBar(
@@ -85,7 +88,7 @@ class _TransferPage2State extends State<TransferPage2> {
                           ),
                         ),
                         SizedBox(height: 20,),
-                        Semantics(
+                        Semantics( // this semantics are user to inform the user who's using talkback. So when they use talkback, the device will read out loud the label
                           label: "Daftarkan nomor rekening baru dengan tombol ini",
                           child: Container(
                             width: double.infinity,
@@ -167,7 +170,7 @@ class _TransferPage2State extends State<TransferPage2> {
                                   Text(watch.listItems[index],
                                       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                                       softWrap: true),
-                                  Text('${watch.nomor_rekening[index]}', style: TextStyle(color: Color(0xFF3D3D3D), fontSize: 20),)
+                                  Text('${watch.nomor_rekening[index]}', style: TextStyle(color: Color(0xFF3D3D3D), fontSize: 20),) // the developer uses the watch alias to get the data of nomor rekening from the provider
                                 ],
                               ),
                             ),
